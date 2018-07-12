@@ -19,7 +19,6 @@ class Home extends Component {
           appId="1802578269836677"
           autoLoad={true}
           fields="name,email,picture"
-          scope="public_profile,user_link"
           callback={this.props.callback} />
         } />
         <Container text>

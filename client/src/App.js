@@ -14,13 +14,14 @@ class App extends Component {
     super();
     this.state ={
       id: null,
-      name: null
+      name: null,
+      picture: null
     }
   }
 
   responseFacebook = (response) => {
     console.log(response);
-    this.setState({id: response.id, name: response.name});
+    this.setState({id: response.id, name: response.name, picture: response.picture.data.url});
   }
 
   render() {

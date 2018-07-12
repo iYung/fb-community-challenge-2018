@@ -7,7 +7,8 @@ var UserSchema   = new Schema({
     likes: Number,
     categories: [String],
     tags: [String],
-    username: String
+    username: String,
+    picture: String
 });
 
 module.exports = mongoose.model('User', UserSchema);
