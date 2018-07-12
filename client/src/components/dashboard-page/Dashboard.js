@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Header, Container, Table, Button } from 'semantic-ui-react';
-import { Link } from 'react-router-dom'
+import { Header, Container, Table, Input, Button } from 'semantic-ui-react';
 import './dashboard.css';
 import HeaderBar from '../header/header';
 
@@ -8,24 +7,22 @@ class Dashboard extends Component {
   render() {
     return (
         <div className="fullpage">
-            <HeaderBar title="Big text" content={
-                <Link to="/create">
-                    <Button>
-                    New branch
-                    </Button>
-                </Link>
-        } />
-        <Container text>
-            <Header>
-                New branches
-            </Header>
-            <DummyTable />
-            <Header>
-                Your branches
-            </Header>
-            <DummyTable />
-        </Container>
-      </div>
+            <HeaderBar title="Dashboard" subtitle={"Logged in as " + this.props.id} content={
+                <Button>
+                    Edit your profile.
+                </Button>
+            }/>
+            <Container text>
+                <Header>
+                    Search
+                </Header>
+                <Input fluid placeholder='Search...' />
+                <Header>
+                    People
+                </Header>
+                <DummyTable />
+            </Container>
+        </div>
     );
   }
 }

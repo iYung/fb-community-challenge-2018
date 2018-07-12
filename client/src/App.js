@@ -5,19 +5,28 @@ import {
   Route
 } from 'react-router-dom'
 import Home from './components/home-page/Home'
-import Branch from './components/branch-page/Branch'
 import Dashboard from './components/dashboard-page/Dashboard';
-import Create from './components/create-page/Create';
 
 class App extends Component {
+
+  constructor() {
+    super();
+    this.state ={
+      id: null
+    }
+  }
+
+  responseFacebook = (response) => {
+    console.log(response);
+    this.setState({id: response.id});
+  }
+
   render() {
     return (
       <Router>
         <div>
-          <Route exact path="/" component={Home}/>
-          <Route exact path="/dashboard" component={Dashboard}/>
-          <Route exact path="/create" component={Create}/>
-          <Route exact path="/branch/:id" component={Branch}/>
+          <Route exact path="/" render={()=>(<Home callback={this.responseFacebook} id={this.state.id} />)}/>
+          <Route exact path="/dashboard" render={()=>(<Dashboard id={this.state.id} />)}/>
         </div>
       </Router>
     );

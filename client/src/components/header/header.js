@@ -4,14 +4,10 @@ import './header.css';
 
 class HeaderBar extends Component {
 
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
         <Segment basic textAlign="center" inverted color="black" id="main-header">
-          <Header id="main-title" onClick={() => this._onClick()}>
+          <Header id="main-title">
             {this.props.title}
           </Header>
           {

@@ -1,8 +1,10 @@
 var mongoose = require('mongoose');
-var express    = require('express');        // call express
-var app        = express();                 // define our app using express
+var express    = require('express');    
+var app        = express();           
 var bodyParser = require('body-parser');
 require('dotenv').config();
+
+var User = require('./schemas/user');
 
 //connect to our mongoDB
 mongoose.connect(process.env.DB_URI);
@@ -29,13 +31,11 @@ app.use(function(req, res, next) {
 
 var router = express.Router();
 
-//get lastest replays, new replay
 router.route('/')
     .get(function(req, res) {
         return res.send("YO DAWG");
     });
 
-//use router
 app.use('/api', router);
 app.listen(port);
 console.log('Magic happens on port ' + port);

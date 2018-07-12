@@ -1,20 +1,25 @@
 import React, { Component } from 'react';
-import { Header, Button, Container, Grid, Image } from 'semantic-ui-react';
-import { Link } from 'react-router-dom'
+import { Header, Container, Grid, Image } from 'semantic-ui-react';
+import { Redirect } from 'react-router-dom'
+import FacebookLogin from 'react-facebook-login';
+
 import './Home.css';
 import HeaderBar from '../header/header';
 
 class Home extends Component {
 
   render() {
+    /*if (this.props.id != null) {
+      return <Redirect to="/dashboard" />
+    }*/
     return (
       <div className="fullpage">
         <HeaderBar title="Homepage" subtitle="Smaller text" content={
-          <Link to="/dashboard">
-          <Button color="grey">
-            Click me
-          </Button>
-          </Link>
+          <FacebookLogin
+          appId="1802578269836677"
+          autoLoad={true}
+          fields="name,email,picture"
+          callback={this.props.callback} />
         } />
         <Container text>
           <Grid stackable stretched columns="2">
