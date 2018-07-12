@@ -9,9 +9,9 @@ import HeaderBar from '../header/header';
 class Home extends Component {
 
   render() {
-    /*if (this.props.id != null) {
+    if (this.props.id != null) {
       return <Redirect to="/dashboard" />
-    }*/
+    }
     return (
       <div className="fullpage">
         <HeaderBar title="Homepage" subtitle="Smaller text" content={
@@ -19,6 +19,7 @@ class Home extends Component {
           appId="1802578269836677"
           autoLoad={true}
           fields="name,email,picture"
+          scope="public_profile,user_link"
           callback={this.props.callback} />
         } />
         <Container text>

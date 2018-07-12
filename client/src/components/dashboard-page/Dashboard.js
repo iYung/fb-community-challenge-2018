@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Header, Container, Table, Input, Button } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 import './dashboard.css';
 import HeaderBar from '../header/header';
 
@@ -7,10 +8,12 @@ class Dashboard extends Component {
   render() {
     return (
         <div className="fullpage">
-            <HeaderBar title="Dashboard" subtitle={"Logged in as " + this.props.id} content={
-                <Button>
-                    Edit your profile.
-                </Button>
+            <HeaderBar title="Dashboard" subtitle={"Logged in as " + this.props.name} content={
+                <Link to="/profile">
+                    <Button>
+                        Edit your profile.
+                    </Button>
+                </Link>
             }/>
             <Container text>
                 <Header>
