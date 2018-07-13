@@ -43,7 +43,9 @@ router.route('/user')
                 var newUser = new User();
                 newUser.id = req.body.id;
                 newUser.tags = [];
+                newUser.pic = req.body.pic;
                 newUser.username = "";
+                newUser.bio = "";
                 newUser.likes = 0;
                 newUser.save(function(err) {
                     if (err)
@@ -65,6 +67,8 @@ router.route('/user/update')
                 return res.send(err);
             if (user != null) {
                 user.username = req.body.username;
+                user.bio = req.body.bio;
+                user.tags = req.body.tags;
                 user.save(function(err) {
                     if (err)
                         return res.send(err);

@@ -11,34 +11,40 @@ class Profile extends Component {
     super(props);
     this.state = {
       categories: null,
-      tags: null,
-      username: null
+      tags: [],
+      username: null,
+      bio: null
     };
   }
 
   componentWillMount() {
     Axios.post("/api/user", Qs.stringify({
-      "id" : this.props.id
+      "id" : this.props.id,
+      "pic": this.props.profilePic
     })).then((res) => {
       this.setState({
-        "username" : res.data.username
+        "username" : res.data.username,
+        "bio": res.data.bio,
+        "tags": res.data.tags
       })
+      console.log(res.data);
     })
   }
 
   updateData() {
 
-    console.log(document.getElementById("username").value);
+    console.log(document.getElementById("bio").value);
     Axios.post("/api/user/update", Qs.stringify({
       "id" : this.props.id,
-      "username" : document.getElementById("username").value
+      "username" : document.getElementById("username").value,
+      "bio" : document.getElementById("bio").value,
+      "tags": document.getElementById("tags").value.split(",")
     })).then( res => {
-      console.log(res);
+      alert("Your profile has been successfully updated!");
     })
   }
 
   render() {
-    var title = this.props.name;
     return (
       <div className="fullpage">
         <HeaderBar title={
@@ -59,11 +65,11 @@ class Profile extends Component {
           <Header>
             Tags
           </Header>
-          <Input fluid/>
+          <Input id="tags" fluid defaultValue={this.state.tags.join(",")}/>
           <Header>
-            Example input field
+            About me
           </Header>
-          <Input fluid placeholder='Input...' />
+          <Input id="bio" fluid defaultValue={this.state.bio}/> 
           <Header>
             Example input field
           </Header>
