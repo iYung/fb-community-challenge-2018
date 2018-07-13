@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Header, Input, Image, Button, Segment } from 'semantic-ui-react';
+import Axios from 'axios';
+import Qs from 'qs';
 
 import HeaderBar from '../header/header';
 
@@ -15,8 +17,13 @@ class Profile extends Component {
   }
 
   componentWillMount() {
-    //get data from server
-    //populate state
+    Axios.post("/api/user", Qs.stringify({
+      "id" : this.props.id
+    })).then((res) => {
+      this.setState({
+        "username" : res.data.id
+      })
+    })
   }
 
   updateData() {
@@ -37,7 +44,7 @@ class Profile extends Component {
           <Header>
             Facebook Messenger Username
           </Header>
-          <Input fluid/>
+          <Input fluid defaultValue={this.state.username}/> 
           <Header>
             Categories
           </Header>
