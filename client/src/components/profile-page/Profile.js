@@ -34,11 +34,15 @@ class Profile extends Component {
   updateData() {
 
     console.log(document.getElementById("bio").value);
+    var arr = document.getElementById("tags").value.split(",")
+    for(let index = 0; index < arr.length; index++) {
+      arr[index] = arr[index].trim()
+    }
     Axios.post("/api/user/update", Qs.stringify({
       "id" : this.props.id,
       "username" : document.getElementById("username").value,
       "bio" : document.getElementById("bio").value,
-      "tags": document.getElementById("tags").value.split(",")
+      "tags": arr
     })).then( res => {
       alert("Your profile has been successfully updated!");
     })
@@ -65,7 +69,7 @@ class Profile extends Component {
           <Header>
             Tags
           </Header>
-          <Input id="tags" fluid defaultValue={this.state.tags.join(",")}/>
+          <Input id="tags" fluid defaultValue={this.state.tags.join(", ")}/>
           <Header>
             About me
           </Header>
