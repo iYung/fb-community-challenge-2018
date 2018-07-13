@@ -25,15 +25,37 @@ app.use(function(req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
   res.header('Access-Control-Allow-Headers', 'Content-Type');
-  console.log('Req made');
   next();
 });
 
 var router = express.Router();
 
-router.route('/')
+//Login route
+//params: fb id
+router.route('/user')
+    .post(function(req, res) {
+        User.findOne({
+            id: req.body.id
+        },function(err, user) {
+            if (err)
+                return res.send(err);
+            if (user == null) {
+                //create user
+            } else {
+                //return user data
+            }
+        });
+    });
+
+//Search by tag
+//params: tag
+router.route('/user/search/:tag')
     .get(function(req, res) {
-        return res.send("YO DAWG");
+        User.find({
+            tags: req.params.tag
+        },function(err, users) {
+            return res.json(users);
+        });
     });
 
 app.use('/api', router);
