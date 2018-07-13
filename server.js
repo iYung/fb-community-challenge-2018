@@ -40,9 +40,18 @@ router.route('/user')
             if (err)
                 return res.send(err);
             if (user == null) {
-                //create user
+                var newUser = new User();
+                newUser.id = req.body.id;
+                newUser.tags = [];
+                newUser.username = "";
+                newUser.likes = 0;
+                newUser.save(function(err) {
+                    if (err)
+                        return res.send(err);
+                    res.json(newUser);
+                });
             } else {
-                //return user data
+                res.json(user);
             }
         });
     });
