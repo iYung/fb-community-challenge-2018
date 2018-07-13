@@ -21,13 +21,20 @@ class Profile extends Component {
       "id" : this.props.id
     })).then((res) => {
       this.setState({
-        "username" : res.data.id
+        "username" : res.data.username
       })
     })
   }
 
   updateData() {
-    //upload user changes to server
+
+    console.log(document.getElementById("username").value);
+    Axios.post("/api/user/update", Qs.stringify({
+      "id" : this.props.id,
+      "username" : document.getElementById("username").value
+    })).then( res => {
+      console.log(res);
+    })
   }
 
   render() {
@@ -44,7 +51,7 @@ class Profile extends Component {
           <Header>
             Facebook Messenger Username
           </Header>
-          <Input fluid defaultValue={this.state.username}/> 
+          <Input id="username" fluid defaultValue={this.state.username}/> 
           <Header>
             Categories
           </Header>
@@ -63,7 +70,7 @@ class Profile extends Component {
           <Input fluid placeholder='Input...' />
 
           <Segment basic>
-            <Button>Submit</Button>
+            <Button onClick={() => {this.updateData()}}>Submit</Button>
           </Segment>
         </Container>
       </div>
