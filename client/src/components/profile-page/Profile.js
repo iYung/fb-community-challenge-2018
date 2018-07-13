@@ -37,15 +37,15 @@ class Profile extends Component {
           <Header>
             Facebook Messenger Username
           </Header>
-          <Input fluid placeholder='Input...' />
+          <Input fluid/>
           <Header>
-            Example input field
+            Categories
           </Header>
-          <Input fluid placeholder={'Input...'} />
+          <Input fluid/>
           <Header>
-            Example input field
+            Tags
           </Header>
-          <Input fluid placeholder='Input...' />
+          <Input fluid/>
           <Header>
             Example input field
           </Header>
