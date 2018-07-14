@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { Container, Header, Input, Image, Button, Segment } from 'semantic-ui-react';
+import { Container, Header, Input, Button, Segment } from 'semantic-ui-react';
 import Axios from 'axios';
 import Qs from 'qs';
 
-import HeaderBar from '../header/header';
+import HeaderBar from '../header/Header';
+import NavBar from '../nav/Nav';
 
 class Profile extends Component {
 
@@ -18,17 +19,20 @@ class Profile extends Component {
   }
 
   componentWillMount() {
-    Axios.post("/api/user", Qs.stringify({
-      "id" : this.props.id,
-      "pic": this.props.profilePic
-    })).then((res) => {
-      this.setState({
-        "username" : res.data.username,
-        "bio": res.data.bio,
-        "tags": res.data.tags
+    if (this.props.id != null) {
+      Axios.post("/api/user", Qs.stringify({
+        "id" : this.props.id,
+        "pic": this.props.profilePic,
+        "name": this.props.name
+      })).then((res) => {
+        this.setState({
+          "username" : res.data.username,
+          "bio": res.data.bio,
+          "tags": res.data.tags
+        })
+        console.log(res.data);
       })
-      console.log(res.data);
-    })
+    }
   }
 
   updateData() {
@@ -51,10 +55,10 @@ class Profile extends Component {
   render() {
     return (
       <div className="fullpage">
+        <NavBar/>
         <HeaderBar title={
           <div>
-          <Image circular avatar size="tiny" src={this.props.profilePic}/> 
-          {" " + this.props.name}
+          {this.props.name}
           </div>
         }/>
         <Container text>

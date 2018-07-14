@@ -33,6 +33,12 @@ var router = express.Router();
 //Login route
 //params: fb id
 router.route('/user')
+    .get(function(req, res) {
+        User.find({
+        },function(err, users) {
+            return res.json(users);
+        }).limit(15);
+    })
     .post(function(req, res) {
         User.findOne({
             id: req.body.id
@@ -45,6 +51,7 @@ router.route('/user')
                 newUser.tags = [];
                 newUser.pic = req.body.pic;
                 newUser.username = "";
+                newUser.name = req.body.name;
                 newUser.bio = "";
                 newUser.likes = 0;
                 newUser.save(function(err) {
@@ -84,11 +91,12 @@ router.route('/user/update')
 //params: tag
 router.route('/user/search/:tag')
     .get(function(req, res) {
+        console.log("Searching: " + req.params.tag);
         User.find({
             tags: req.params.tag
         },function(err, users) {
             return res.json(users);
-        });
+        }).limit(15);
     });
 
 app.use('/api', router);
