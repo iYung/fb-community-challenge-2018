@@ -6,7 +6,7 @@ import Qs from 'qs';
 import HeaderBar from '../header/Header';
 import NavBar from '../nav/Nav';
 
-class Profile extends Component {
+class ProfilePage extends Component {
 
   constructor(props){
     super(props);
@@ -92,4 +92,4 @@ class Profile extends Component {
   }
 }
 
-export default Profile;
+export default ProfilePage;

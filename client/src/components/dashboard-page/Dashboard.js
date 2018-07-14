@@ -7,7 +7,7 @@ import './dashboard.css';
 import HeaderBar from '../header/Header';
 import NavBar from '../nav/Nav';
 
-class Dashboard extends Component {
+class DashboardPage extends Component {
 
     constructor(props) {
         super(props);
@@ -75,10 +75,11 @@ class DummyTable extends Component {
                     {
                         this.props.data.map( user => 
                             <Table.Row>
-                                <Table.Cell collapsing><Image size="mini" rounded centered src={user.pic} /></Table.Cell>
-                                <Table.Cell>{user.name}</Table.Cell>
+                                <Table.Cell collapsing><Link to={"/user/" + user.id}><Image size="mini" rounded centered src={user.pic} /></Link></Table.Cell>
+                                <Table.Cell><Link to={"/user/" + user.id}>{user.name}</Link></Table.Cell>
                                 <Table.Cell>{user.likes}</Table.Cell>
                             </Table.Row>
+                            
                         )
                     }                
                 </Table.Body>
@@ -88,4 +89,4 @@ class DummyTable extends Component {
         );
     }
 }
-export default Dashboard;
+export default DashboardPage;

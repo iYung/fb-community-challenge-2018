@@ -5,9 +5,10 @@ import {
   BrowserRouter as Router,
   Route
 } from 'react-router-dom'
-import Home from './components/home-page/Home'
-import Dashboard from './components/dashboard-page/Dashboard';
-import Profile from './components/profile-page/Profile';
+import HomePage from './components/home-page/Home'
+import DashboardPage from './components/dashboard-page/Dashboard';
+import ProfilePage from './components/profile-page/Profile';
+import UserPage from './components/user-page/User'
 
 class App extends Component {
 
@@ -29,9 +30,10 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <Route exact path="/" render={()=>(<Home callback={this.responseFacebook} id={this.state.id} />)}/>
-          <Route exact path="/dashboard" render={()=>(<Dashboard id={this.state.id} name={this.state.name} />)}/>
-          <Route exact path="/profile" render={()=>(<Profile id={this.state.id} name={this.state.name} profilePic={this.state.picture}/>)}/>
+          <Route exact path="/" render={()=>(<HomePage callback={this.responseFacebook} id={this.state.id} />)}/>
+          <Route exact path="/dashboard" render={()=>(<DashboardPage id={this.state.id} name={this.state.name} />)}/>
+          <Route exact path="/profile" render={()=>(<ProfilePage id={this.state.id} name={this.state.name} profilePic={this.state.picture}/>)}/>
+          <Route exact path="/user/:id" render={()=>(<UserPage />)}/>
         </div>
       </Router>
     );

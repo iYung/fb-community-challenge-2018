@@ -4,9 +4,9 @@ import { Redirect } from 'react-router-dom'
 import FacebookLogin from 'react-facebook-login';
 
 import './Home.css';
-import HeaderBar from '../header/header';
+import HeaderBar from '../header/Header';
 
-class Home extends Component {
+class HomePage extends Component {
 
   render() {
     if (this.props.id != null) {
@@ -41,4 +41,4 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export default HomePage;
