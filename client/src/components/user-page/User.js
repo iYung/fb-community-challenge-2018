@@ -16,15 +16,18 @@ class UserPage extends Component {
       tags: [],
       username: null,
       bio: null,
-      students: []
+      students: [],
+      id : null
     };
   }
 
   componentWillMount() {
+      let id = window.location.pathname.replace("/user/", "")
       Axios.post("/api/user", Qs.stringify({
-        "id" : window.location.pathname.replace("/user/", "")
+        "id" : id
       })).then((res) => {
         this.setState({
+          "id" : id,
           "name" : res.data.name,
           "username" : res.data.username,
           "bio": res.data.bio,
