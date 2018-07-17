@@ -116,7 +116,7 @@ router.route('/user/:id/add')
 router.route('/user/:id/tip')
     .post(function(req, res) {
         User.findOne({
-            id: req.params.id
+            id: req.body.id
         },function(err, user) {
             if (err)
                 return res.send(err);
@@ -127,7 +127,7 @@ router.route('/user/:id/tip')
                         if (err)
                             return res.send(err);
                         User.findOne({
-                            id: req.body.id
+                            id: req.params.id
                         },function(err, user) {
                             if (err)
                                 return res.send(err);

@@ -44,6 +44,12 @@ class UserPage extends Component {
     }))
   }
 
+  tipUser() {
+    Axios.post("/api/user/" + this.state.id + "/tip", Qs.stringify({
+      "id" : this.props.id
+    }))
+  }
+
   render() {
     return (
       <div className="fullpage">
@@ -55,9 +61,7 @@ class UserPage extends Component {
             </a>
             {
               this.state.students.indexOf(this.props.id) > -1 ?
-              <a href={"https:/m.me/" + this.state.username} target="_blank">
-                <Button>Tip</Button>
-              </a>
+              <Button onClick={() => {this.tipUser()}}>Tip</Button>
               :
               ""
             }
