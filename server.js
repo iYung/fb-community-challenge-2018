@@ -88,7 +88,7 @@ router.route('/user/update')
         });
     });
 
-    //enroll user to another
+//enroll user to another
 router.route('/user/:id/add')
     .post(function(req, res) {
         User.findOne({
@@ -106,6 +106,46 @@ router.route('/user/:id/add')
                     });
                 } else {
                     res.send("Already a student"); 
+                }
+            } else {
+                res.send("OOOPS");  
+            }
+        });
+    });
+
+router.route('/user/:id/tip')
+    .post(function(req, res) {
+        User.findOne({
+            id: req.params.id
+        },function(err, user) {
+            if (err)
+                return res.send(err);
+            if (user != null) {
+                if (user.likes > 0) {
+                    user.likes -= 1;
+                    user.save(function(err) {
+                        if (err)
+                            return res.send(err);
+                        User.findOne({
+                            id: req.body.id
+                        },function(err, user) {
+                            if (err)
+                                return res.send(err);
+                            if (user != null) {
+                                user.likes += 1;
+                                user.save( err => {
+                                    if (err)
+                                        return res.send(err)
+                                    else
+                                        return res.send("Success");
+                                });
+                            } else {
+                                res.send("User not found");
+                            }
+                        });
+                    });
+                } else {
+                    res.send("Not enough likes"); 
                 }
             } else {
                 res.send("OOOPS");  
