@@ -88,6 +88,26 @@ router.route('/user/update')
         });
     });
 
+router.route('/user/:id/add')
+    .post(function(req, res) {
+        User.findOne({
+            id: req.params.id
+        },function(err, user) {
+            if (err)
+                return res.send(err);
+            if (user != null) {
+                user.students.push(req.body.id);
+                user.save(function(err) {
+                    if (err)
+                        return res.send(err);
+                    res.json(user);
+                });
+            } else {
+                res.send("OOOPS");  
+            }
+        });
+    });
+
 //Search by tag
 //params: tag
 router.route('/user/search/:tag')
