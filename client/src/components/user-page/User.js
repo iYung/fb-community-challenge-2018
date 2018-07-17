@@ -38,6 +38,12 @@ class UserPage extends Component {
       })
   }
 
+  enrollUser() {
+    Axios.post("/api/user/" + this.state.id + "/add", Qs.stringify({
+      "id" : this.props.id
+    }))
+  }
+
   render() {
     return (
       <div className="fullpage">
@@ -45,7 +51,7 @@ class UserPage extends Component {
         <HeaderBar title={this.state.name} content={
           <div>
             <a href={"https:/m.me/" + this.state.username} target="_blank">
-                <Button>Messenger</Button>
+                <Button onClick={() => {this.enrollUser()}} >Messenger</Button>
             </a>
             {
               this.state.students.indexOf(this.props.id) > -1 ?
