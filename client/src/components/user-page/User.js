@@ -15,7 +15,8 @@ class UserPage extends Component {
       categories: null,
       tags: [],
       username: null,
-      bio: null
+      bio: null,
+      students: []
     };
   }
 
@@ -24,10 +25,11 @@ class UserPage extends Component {
         "id" : window.location.pathname.replace("/user/", "")
       })).then((res) => {
         this.setState({
-            "name" : res.data.name,
+          "name" : res.data.name,
           "username" : res.data.username,
           "bio": res.data.bio,
-          "tags": res.data.tags
+          "tags": res.data.tags,
+          "students": res.data.students
         })
         console.log(res.data);
       })

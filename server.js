@@ -49,6 +49,7 @@ router.route('/user')
                 var newUser = new User();
                 newUser.id = req.body.id;
                 newUser.tags = [];
+                newUser.students = [];
                 newUser.pic = req.body.pic;
                 newUser.username = "";
                 newUser.name = req.body.name;
