@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Axios from 'axios';
+import Qs from 'qs';
 
 import './App.css';
 import {
@@ -17,13 +19,53 @@ class App extends Component {
     this.state ={
       id: null,
       name: null,
-      picture: null
+      picture: null,
+      //from profilejs
+      categories: null,
+      tags: [],
+      username: null,
+      bio: null,
+      likes: null
     }
   }
 
+  updateProfile = () => {
+    var arr = document.getElementById("tags").value.split(",")
+    for(let index = 0; index < arr.length; index++) {
+      arr[index] = arr[index].trim()
+    }
+    Axios.post("/api/user/update", Qs.stringify({
+      "id" : this.state.id,
+      "username" : document.getElementById("username").value,
+      "bio" : document.getElementById("bio").value,
+      "tags": arr
+    })).then( res => {
+      alert("Profile updated!");
+      this.setState({
+        "username" : res.data.username,
+        "bio": res.data.bio,
+        "tags": res.data.tags,
+      })
+    })
+  }
+
   responseFacebook = (response) => {
-    console.log(response);
-    this.setState({id: response.id, name: response.name, picture: response.picture.data.url});
+    Axios.post("/api/user", Qs.stringify({
+      "id" : response.id,
+      "pic": response.picture.data.url,
+      "name": response.name
+    })).then((res) => {
+      this.setState({
+        "id": response.id, 
+        "name": response.name, 
+        "picture": response.picture.data.url,
+        "username" : res.data.username,
+        "bio": res.data.bio,
+        "tags": res.data.tags,
+        "categories": res.data.categories,
+        "likes": res.data.likes
+      })
+    })
   }
 
   render() {
@@ -32,7 +74,18 @@ class App extends Component {
         <div>
           <Route exact path="/" render={()=>(<HomePage callback={this.responseFacebook} id={this.state.id} />)}/>
           <Route exact path="/dashboard" render={()=>(<DashboardPage id={this.state.id} name={this.state.name} />)}/>
-          <Route exact path="/profile" render={()=>(<ProfilePage id={this.state.id} name={this.state.name} profilePic={this.state.picture}/>)}/>
+          <Route exact path="/profile" render={()=>(
+            <ProfilePage
+              updateProfile={this.updateProfile}
+              id={this.state.id} 
+              name={this.state.name} 
+              profilePic={this.state.picture}
+              categories={this.state.categories}
+              tags={this.state.tags}
+              username={this.state.username}
+              bio={this.state.bio}
+            />
+          )}/>
           <Route exact path="/user/:id" render={()=>(<UserPage id={this.state.id}/>)}/>
         </div>
       </Router>

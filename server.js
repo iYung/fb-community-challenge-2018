@@ -80,6 +80,7 @@ router.route('/user/update')
                 user.save(function(err) {
                     if (err)
                         return res.send(err);
+                    console.log(user);
                     res.json(user);
                 });
             } else {
