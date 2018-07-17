@@ -40,7 +40,7 @@ class DashboardPage extends Component {
                 <HeaderBar title="Dashboard" subtitle={"Logged in as " + this.props.name} content={
                     <Link to="/profile">
                         <Button>
-                            Edit your profile.
+                            Edit your profile
                         </Button>
                     </Link>
                 }/>

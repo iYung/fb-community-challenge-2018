@@ -53,7 +53,7 @@ router.route('/user')
                 newUser.username = "";
                 newUser.name = req.body.name;
                 newUser.bio = "";
-                newUser.likes = 0;
+                newUser.likes = 10;
                 newUser.save(function(err) {
                     if (err)
                         return res.send(err);
