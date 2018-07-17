@@ -11,7 +11,7 @@ class UserPage extends Component {
   constructor(props){
     super(props);
     this.state = {
-        name: null,
+      name: null,
       categories: null,
       tags: [],
       username: null,
