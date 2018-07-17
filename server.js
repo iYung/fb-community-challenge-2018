@@ -88,6 +88,7 @@ router.route('/user/update')
         });
     });
 
+    //enroll user to another
 router.route('/user/:id/add')
     .post(function(req, res) {
         User.findOne({
@@ -96,12 +97,16 @@ router.route('/user/:id/add')
             if (err)
                 return res.send(err);
             if (user != null) {
-                user.students.push(req.body.id);
-                user.save(function(err) {
-                    if (err)
-                        return res.send(err);
-                    res.json(user);
-                });
+                if (user.students.indexOf(req.body.id) < 0) {
+                    user.students.push(req.body.id);
+                    user.save(function(err) {
+                        if (err)
+                            return res.send(err);
+                        res.json(user);
+                    });
+                } else {
+                    res.send("Already a student"); 
+                }
             } else {
                 res.send("OOOPS");  
             }

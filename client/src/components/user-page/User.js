@@ -38,13 +38,19 @@ class UserPage extends Component {
       })
   }
 
+  enrollUser() {
+    Axios.post("/api/user/" + this.state.id + "/add", Qs.stringify({
+      "id" : this.props.id
+    }))
+  }
+
   render() {
     return (
       <div className="fullpage">
         <NavBar/>
         <HeaderBar title={this.state.name} content={
             <a href={"https:/m.me/" + this.state.username} target="_blank">
-                <Button>Messenger</Button>
+                <Button onClick={() => {this.enrollUser()}} >Messenger</Button>
             </a>
         }/>
         <Container text>
