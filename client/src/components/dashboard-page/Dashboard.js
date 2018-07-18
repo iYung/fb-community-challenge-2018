@@ -33,6 +33,15 @@ class DashboardPage extends Component {
         })
     }
 
+    handleKeyPress = (e) => {
+        //13 is code for enter key
+        if (e.charCode === 13) {
+          // Prevent the default action to stop scrolling when space is pressed
+          e.preventDefault()
+          this.search()
+        }
+      }
+
     render() {
         return (
             <div className="fullpage">
@@ -48,7 +57,7 @@ class DashboardPage extends Component {
                     <Header>
                         Search
                     </Header>
-                    <Input id="search" action={{ color: 'blue', labelPosition: 'right', icon: 'search', content: 'Search', onClick: this.search }} fluid placeholder='Search...' />
+                    <Input id="search" action={{ color: 'blue', labelPosition: 'right', icon: 'search', content: 'Search', onClick: this.search }} fluid placeholder='Search...' onKeyPress= {this.handleKeyPress}/>
                     <Header>
                         People
                     </Header>
