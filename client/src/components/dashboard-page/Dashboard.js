@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Header, Container, Table, Input, Image } from 'semantic-ui-react';
+import { Container, Table, Input, Image } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import Axios from 'axios';
 
@@ -50,17 +50,14 @@ class DashboardPage extends Component {
                     </Container>
                 }/>
                 <Container text>
-                    <Header>
-                        People
-                    </Header>
-                    <DummyTable data={this.state.users}/>
+                    <SearchResults data={this.state.users}/>
                 </Container>
             </div>
         );
     }
 }
 
-class DummyTable extends Component {
+class SearchResults extends Component {
 
     render() {
         return (
