@@ -37,7 +37,7 @@ router.route('/user')
         User.find({
         },function(err, users) {
             return res.json(users);
-        }).limit(15);
+        }).sort({likes: -1}).limit(5);
     })
     .post(function(req, res) {
         User.findOne({
