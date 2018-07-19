@@ -36,7 +36,6 @@ class ProfilePage extends Component {
             Example input field
           </Header>
           <Input fluid placeholder='Input...' />
-
           <Segment basic>
             <Button onClick={() => {this.props.updateProfile()}}>Submit</Button>
           </Segment>
