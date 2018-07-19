@@ -11,9 +11,11 @@ class NavBar extends Component {
         <Segment basic borderless textAlign="center" size="huge" style={{marginBottom: 0}}>
             <Menu borderless compact secondary size="huge">
                 <Link to="/dashboard">
-                    <Menu.Item name='Dashboard' className="white"/>
+                    <Menu.Item name='About Us' className="white"/>
                 </Link>
-                <Link to="/profile">
+                <Link to="/dashboard">
+                    <Menu.Item name='Dashboard' className="white"/>
+                </Link><Link to="/profile">
                     <Menu.Item name='Profile' className="white"/>
                 </Link>
             </Menu>

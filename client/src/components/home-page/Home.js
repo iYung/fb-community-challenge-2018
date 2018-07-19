@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Header, Container, Grid, Image } from 'semantic-ui-react';
+import { Header, Container, Grid, Image, List } from 'semantic-ui-react';
 import { Redirect } from 'react-router-dom'
 import FacebookLogin from 'react-facebook-login';
 
@@ -21,18 +21,76 @@ class HomePage extends Component {
           fields="name,email,picture"
           callback={this.props.callback} />
         } />
-        <Container text>
-          <Grid stackable stretched columns="2">
+        <Container text textAlign="center">
+          <Header>
+            Popular Skills
+          </Header>
+          <Grid stackable stretched columns="3">
             <Grid.Column verticalAlign="middle" key="1">
-              <Container text>
-                <Header>
-                  Words
-                </Header>
-                Less important words
-              </Container>
+              <Image centered rounded bordered size="medium" src={require("./music-tree.jpg")} />
             </Grid.Column>
             <Grid.Column key="2">
               <Image centered rounded bordered size="medium" src={require("./music-tree.jpg")} />
+            </Grid.Column>
+            <Grid.Column key="3">
+              <Image centered rounded bordered size="medium" src={require("./music-tree.jpg")} />
+            </Grid.Column>
+          </Grid>
+          <Header>
+            Top Mentors
+          </Header>
+          <Grid stackable stretched columns="3">
+            <Grid.Column verticalAlign="middle" key="1">
+              <Image centered rounded bordered size="medium" src={require("./music-tree.jpg")} />
+            </Grid.Column>
+            <Grid.Column key="2">
+              <Image centered rounded bordered size="medium" src={require("./music-tree.jpg")} />
+            </Grid.Column>
+            <Grid.Column key="3">
+              <Image centered rounded bordered size="medium" src={require("./music-tree.jpg")} />
+            </Grid.Column>
+          </Grid>
+        </Container>
+        <Container text>
+          <Header>
+            Can I be a tutor?
+          </Header>
+          Possibly
+          <List bulleted>
+            <List.Item>Books in your garage</List.Item>
+            <List.Item>Youtube ads</List.Item>
+          </List>
+          <Image centered rounded bordered size="large" src={require("./music-tree.jpg")} />
+        </Container>
+        <Container text textAlign="center">
+          <Header>
+            Motivational Blurb
+          </Header>
+          I love the old Kanye, blah blah blah blah Kanye.
+        </Container>
+        <Container text verticalAlign="center">
+          <Grid stackable verticalAlign='middle' columns="2">
+            <Grid.Column key="1">
+              <Header>
+                TEXT
+              </Header>
+              TEXT
+            </Grid.Column>
+            <Grid.Column key="2">
+              <Image centered rounded bordered size="medium" src={require("./music-tree.jpg")} />
+            </Grid.Column>
+          </Grid>
+        </Container>
+        <Container text verticalAlign="center">
+          <Grid stackable verticalAlign='middle' columns="2">
+            <Grid.Column key="1">
+              <Image centered rounded bordered size="medium" src={require("./music-tree.jpg")} /> 
+            </Grid.Column>
+            <Grid.Column key="2">
+              <Header>
+                TEXT
+              </Header>
+              TEXT
             </Grid.Column>
           </Grid>
         </Container>
