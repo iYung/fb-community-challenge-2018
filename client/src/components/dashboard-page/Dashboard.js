@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Header, Container, Table, Input, Button, Image } from 'semantic-ui-react';
+import { Header, Container, Table, Input, Image } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import Axios from 'axios';
 
@@ -45,17 +45,11 @@ class DashboardPage extends Component {
         return (
             <div className="fullpage">
                 <HeaderBar title="Dashboard" subtitle={"Logged in as " + this.props.name} content={
-                    <Link to="/profile">
-                        <Button>
-                            Edit your profile
-                        </Button>
-                    </Link>
+                    <Container text>
+                        <Input id="search" action={{ color: 'blue', labelPosition: 'right', icon: 'search', content: 'Search', onClick: this.search }} fluid placeholder='Search...' onKeyPress= {this.handleKeyPress}/>
+                    </Container>
                 }/>
                 <Container text>
-                    <Header>
-                        Search
-                    </Header>
-                    <Input id="search" action={{ color: 'blue', labelPosition: 'right', icon: 'search', content: 'Search', onClick: this.search }} fluid placeholder='Search...' onKeyPress= {this.handleKeyPress}/>
                     <Header>
                         People
                     </Header>

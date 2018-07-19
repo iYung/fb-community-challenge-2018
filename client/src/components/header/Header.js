@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Segment, Header } from 'semantic-ui-react';
+import { Container, Header } from 'semantic-ui-react';
 import './header.css';
 import NavBar from '../nav/Nav';
 
@@ -8,8 +8,8 @@ class HeaderBar extends Component {
   render() {
     return (
       <div>
-        <NavBar/>
-        <Segment basic textAlign="center" inverted color="black" id="main-header">
+        <Container fluid textAlign="center" id="main-header">
+          <NavBar/>
           <Header id="main-title">
             {this.props.title}
           </Header>
@@ -22,7 +22,7 @@ class HeaderBar extends Component {
             ""
           }
           {this.props.content}
-        </Segment>
+        </Container>
       </div>
     );
   }
