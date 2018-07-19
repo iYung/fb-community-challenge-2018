@@ -5,7 +5,6 @@ import Axios from 'axios';
 
 import './dashboard.css';
 import HeaderBar from '../header/Header';
-import NavBar from '../nav/Nav';
 
 class DashboardPage extends Component {
 
@@ -45,7 +44,6 @@ class DashboardPage extends Component {
     render() {
         return (
             <div className="fullpage">
-                <NavBar/>
                 <HeaderBar title="Dashboard" subtitle={"Logged in as " + this.props.name} content={
                     <Link to="/profile">
                         <Button>

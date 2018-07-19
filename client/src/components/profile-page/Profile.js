@@ -2,14 +2,12 @@ import React, { Component } from 'react';
 import { Container, Header, Input, Button, Segment } from 'semantic-ui-react';
 
 import HeaderBar from '../header/Header';
-import NavBar from '../nav/Nav';
 
 class ProfilePage extends Component {
 
   render() {
     return (
       <div className="fullpage">
-        <NavBar/>
         <HeaderBar title={
           <div>
           {this.props.name}

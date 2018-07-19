@@ -4,7 +4,6 @@ import Axios from 'axios';
 import Qs from 'qs';
 
 import HeaderBar from '../header/Header';
-import NavBar from '../nav/Nav';
 
 class UserPage extends Component {
 
@@ -53,7 +52,6 @@ class UserPage extends Component {
   render() {
     return (
       <div className="fullpage">
-        <NavBar/>
         <HeaderBar title={this.state.name} content={
           <div>
             <a href={"https:/m.me/" + this.state.username} target="_blank">
