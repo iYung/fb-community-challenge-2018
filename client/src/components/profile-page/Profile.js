@@ -8,7 +8,7 @@ class ProfilePage extends Component {
   render() {
     return (
       <div className="fullpage">
-        <HeaderBar title={
+        <HeaderBar id={this.props.id} title={
           <div>
           {this.props.name}
           </div>

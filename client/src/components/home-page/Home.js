@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Header, Container, Grid, Image, List } from 'semantic-ui-react';
+import { Header, Container, Grid, Image, List, Segment } from 'semantic-ui-react';
 import { Redirect } from 'react-router-dom'
 import FacebookLogin from 'react-facebook-login';
 
@@ -14,7 +14,7 @@ class HomePage extends Component {
     }
     return (
       <div className="fullpage">
-        <HeaderBar title="Homepage" subtitle="Smaller text" content={
+        <HeaderBar id={this.props.id} title="Homepage" subtitle="Smaller text" content={
           <FacebookLogin
           appId="1802578269836677"
           autoLoad={true}
@@ -41,13 +41,18 @@ class HomePage extends Component {
           </Header>
           <Grid stackable stretched columns="3">
             <Grid.Column verticalAlign="middle" key="1">
-              <Image centered rounded bordered size="medium" src={require("./music-tree.jpg")} />
+              <Segment textAlign="center"><Image centered rounded bordered size="medium" src={require("./music-tree.jpg")} />
+              Test text
+              </Segment>
             </Grid.Column>
             <Grid.Column key="2">
-              <Image centered rounded bordered size="medium" src={require("./music-tree.jpg")} />
-            </Grid.Column>
+              <Segment textAlign="center"><Image centered rounded bordered size="medium" src={require("./music-tree.jpg")} />
+                Test text
+              </Segment>            </Grid.Column>
             <Grid.Column key="3">
-              <Image centered rounded bordered size="medium" src={require("./music-tree.jpg")} />
+              <Segment textAlign="center"><Image centered rounded bordered size="medium" src={require("./music-tree.jpg")} />
+                Test text
+              </Segment>
             </Grid.Column>
           </Grid>
         </Container>

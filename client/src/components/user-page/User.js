@@ -46,7 +46,7 @@ class UserPage extends Component {
   render() {
     return (
       <div className="fullpage">
-        <HeaderBar title={this.state.name} content={
+        <HeaderBar id={this.props.id} title={this.state.name} content={
           <div>
             <a href={"https:/m.me/" + this.state.username} target="_blank">
                 <Button onClick={() => {this.enrollUser()}} >Messenger</Button>

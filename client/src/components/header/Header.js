@@ -9,7 +9,7 @@ class HeaderBar extends Component {
     return (
       <div>
         <Container fluid textAlign="center" id="main-header">
-          <NavBar/>
+          <NavBar id={this.props.id} />
           <Header id="main-title">
             {this.props.title}
           </Header>

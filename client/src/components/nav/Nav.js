@@ -15,9 +15,15 @@ class NavBar extends Component {
                 </Link>
                 <Link to="/dashboard">
                     <Menu.Item name='Dashboard' className="white"/>
-                </Link><Link to="/profile">
-                    <Menu.Item name='Profile' className="white"/>
                 </Link>
+                {
+                    this.props.id != null ? 
+                    <Link to="/profile">
+                        <Menu.Item name='Profile' className="white"/>
+                    </Link>
+                    :
+                    ""
+                }
             </Menu>
         </Segment>
     );

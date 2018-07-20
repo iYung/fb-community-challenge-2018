@@ -44,7 +44,7 @@ class DashboardPage extends Component {
     render() {
         return (
             <div className="fullpage">
-                <HeaderBar title="Dashboard" subtitle={"Logged in as " + this.props.name + ". You have " + this.props.likes + " units."} content={
+                <HeaderBar id={this.props.id} title="Dashboard" subtitle={"Logged in as " + this.props.name + ". You have " + this.props.likes + " units."} content={
                     <Container text>
                         <Input id="search" action={{ color: 'blue', labelPosition: 'right', icon: 'search', content: 'Search', onClick: this.search }} fluid placeholder='Search...' onKeyPress= {this.handleKeyPress}/>
                     </Container>
@@ -76,8 +76,7 @@ class SearchResults extends Component {
                                 <Table.Cell collapsing><Link to={"/user/" + user.id}><Image size="mini" rounded centered src={user.pic} /></Link></Table.Cell>
                                 <Table.Cell><Link to={"/user/" + user.id}>{user.name}</Link></Table.Cell>
                                 <Table.Cell>{user.likes}</Table.Cell>
-                            </Table.Row>
-                            
+                            </Table.Row> 
                         )
                     }                
                 </Table.Body>
