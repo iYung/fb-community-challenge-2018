@@ -68,12 +68,21 @@ class App extends Component {
     })
   }
 
+  tipUser = (id) => {
+    if (this.state.likes > 0) {
+      Axios.post("/api/user/" + id + "/tip", Qs.stringify({
+        "id" : this.state.id
+      }))
+      this.setState({ "likes": this.state.likes - 1 })
+    }
+  }
+
   render() {
     return (
       <Router>
         <div>
           <Route exact path="/" render={()=>(<HomePage callback={this.responseFacebook} id={this.state.id} />)}/>
-          <Route exact path="/dashboard" render={()=>(<DashboardPage id={this.state.id} name={this.state.name} />)}/>
+          <Route exact path="/dashboard" render={()=>(<DashboardPage id={this.state.id} name={this.state.name} likes={this.state.likes}/>)}/>
           <Route exact path="/profile" render={()=>(
             <ProfilePage
               updateProfile={this.updateProfile}
@@ -86,7 +95,10 @@ class App extends Component {
               bio={this.state.bio}
             />
           )}/>
-          <Route exact path="/user/:id" render={()=>(<UserPage id={this.state.id}/>)}/>
+          <Route exact path="/user/:id" render={()=>(<UserPage 
+            id={this.state.id} 
+            profileLikes={this.state.likes}
+            tipFunction={this.tipUser}/>)}/>
         </div>
       </Router>
     );
