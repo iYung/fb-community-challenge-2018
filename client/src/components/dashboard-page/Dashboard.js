@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Table, Input, Image } from 'semantic-ui-react';
+import { Container, Table, Input, Image, Select, Button } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import Axios from 'axios';
 
@@ -42,11 +42,21 @@ class DashboardPage extends Component {
       }
 
     render() {
+        const options = [
+            { key: 'all categories', text: 'All Categories', value: 'all categories' },
+            { key: 'languages', text: 'Languages', value: 'languages' },
+            { key: 'technology', text: 'Technology', value: 'technology' },
+            { key: 'cooking', text: 'Cooking', value: 'cooking' },
+          ]
         return (
             <div className="fullpage">
                 <HeaderBar id={this.props.id} title="Dashboard" subtitle={"Logged in as " + this.props.name + ". You have " + this.props.likes + " units."} content={
                     <Container text>
-                        <Input id="search" action={{ color: 'blue', labelPosition: 'right', icon: 'search', content: 'Search', onClick: this.search }} fluid placeholder='Search...' onKeyPress= {this.handleKeyPress}/>
+                        <Input id="search" type='text' fluid placeholder='Search...' onKeyPress= {this.handleKeyPress} action>
+                            <Select options={options} defaultValue='all categories' />
+                            <input />
+                            <Button type='submit' onClick={this.search} color='blue'>Search</Button>
+                        </Input>
                     </Container>
                 }/>
                 <Container text>
