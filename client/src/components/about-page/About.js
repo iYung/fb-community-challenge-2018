@@ -8,7 +8,7 @@ class AboutPage extends Component {
   render() {
     return (
       <div className="fullpage">
-        <HeaderBar id={this.props.id} title="About Us" />
+        <HeaderBar loggedin = "true" id={this.props.id} title="About Us" />
         <Container text textAlign="center">
           <Header>
             Popular Skills
