@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Header, Input, Button, Segment } from 'semantic-ui-react';
+import { Container, Header, Input, Button, Segment, TextArea, Form } from 'semantic-ui-react';
 
 import HeaderBar from '../header/Header';
 
@@ -14,6 +14,7 @@ class ProfilePage extends Component {
           </div>
         }/>
         <Container text>
+        <Form>
           <Header>
             Facebook Messenger Username
           </Header>
@@ -29,10 +30,11 @@ class ProfilePage extends Component {
           <Header>
             About me
           </Header>
-          <Input id="bio" fluid defaultValue={this.props.bio}/> 
+          <TextArea id="bio" fluid defaultValue={this.props.bio}/> 
           <Segment basic>
             <Button onClick={() => {this.props.updateProfile()}}>Submit</Button>
           </Segment>
+          </Form>
         </Container>
       </div>
     );
