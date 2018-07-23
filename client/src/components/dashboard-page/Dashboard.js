@@ -27,7 +27,8 @@ class DashboardPage extends Component {
 
     search = () => {
         var target = document.getElementById("search").value;
-        var category = document.getElementById("categories").childNodes[0].text;
+        var category = document.getElementById("categories").childNodes[0].innerText;
+        console.log(category)
         Axios.get("/api/user/search/" + category + "/" + target).then((res) => {
             this.setState({
                 users: res.data,
