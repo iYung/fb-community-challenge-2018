@@ -13,7 +13,7 @@ class UserPage extends Component {
     super(props);
     this.state = {
       name: null,
-      categories: null,
+      categories: [],
       tags: [],
       username: null,
       pic: null,
@@ -21,7 +21,8 @@ class UserPage extends Component {
       students: [],
       id : null,
       success: null,
-      likes: null
+      likes: null,
+      description: null
     };
   }
 
@@ -38,7 +39,9 @@ class UserPage extends Component {
           "tags": res.data.tags,
           "pic": res.data.pic,
           "students": res.data.students,
-          "likes": res.data.likes
+          "likes": res.data.likes,
+          "categories": res.data.categories,
+          "description": res.data.description
         })
         console.log(res.data);
       })
@@ -73,7 +76,7 @@ class UserPage extends Component {
                 <Segment className="blue" compact textAlign="center">
                   <Image src={this.state.pic} size='medium'/>
                   <div id="user-desc" className="black">
-                    Jason Long
+                    {this.state.description}
                   </div>
                   {this.state.likes} likes
                 </Segment>

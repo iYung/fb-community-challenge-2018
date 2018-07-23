@@ -104,6 +104,7 @@ class SearchResults extends Component {
                                             <Image centered rounded bordered size="small" src={col.pic} />
                                             {col.name}
                                         </Link>
+                                        {col.description}
                                     </Segment>
                                 </Grid.Column>
                             )
