@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Grid, Segment, Input, Image, Select, Button } from 'semantic-ui-react';
+import { Container, Grid, Segment, Input, Image, Select, Button, Header } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import Axios from 'axios';
 
@@ -11,6 +11,7 @@ class DashboardPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            searchResultText: "Top Mentors",
             users: []
         }
     }
@@ -25,9 +26,11 @@ class DashboardPage extends Component {
     }
 
     search = () => {
-        Axios.get("/api/user/search/" + document.getElementById("search").value).then((res) => {
+        var target = document.getElementById("search").value;
+        Axios.get("/api/user/search/" + target).then((res) => {
             this.setState({
-                users: res.data
+                users: res.data,
+                searchResultText: `Top mentors for ${target}`
             })
         })
     }
@@ -50,7 +53,7 @@ class DashboardPage extends Component {
           ]
         return (
             <div className="fullpage">
-                <HeaderBar loggedin = "true" id={this.props.id} title="Dashboard" subtitle={"Logged in as " + this.props.name + ". You have " + this.props.likes + " units."} content={
+                <HeaderBar loggedin="true" id={this.props.id} title="Dashboard" subtitle={"Logged in as " + this.props.name + ". You have " + this.props.likes + " units."} content={
                     <Container text>
                         <Input id="search" type='text' fluid placeholder='Search...' onKeyPress= {this.handleKeyPress} action>
                             <Select options={options} defaultValue='all categories' />
@@ -60,6 +63,9 @@ class DashboardPage extends Component {
                     </Container>
                 }/>
                 <Container text>
+                    <Header textAlign="center">
+                        {this.state.searchResultText}
+                    </Header>
                     <SearchResults pic={this.props.pic} data={this.state.users}/>
                 </Container>
             </div>
@@ -89,13 +95,15 @@ class SearchResults extends Component {
             <div>
                 {
                     display.map( row => 
-                        <Grid stackable centered columns="3">
+                        <Grid centered stackable stretched columns="3">
                         {
                             row.map( col => 
-                                <Grid.Column verticalAlign="middle">
-                                    <Segment compact textAlign="center">
-                                        <Image centered rounded bordered size="small" src={col.pic} />
-                                        {col.name}
+                                <Grid.Column textAlign="center">
+                                    <Segment textAlign="center">
+                                        <Link to={"/user/" + col.id} >
+                                            <Image centered rounded bordered size="small" src={col.pic} />
+                                            {col.name}
+                                        </Link>
                                     </Segment>
                                 </Grid.Column>
                             )
