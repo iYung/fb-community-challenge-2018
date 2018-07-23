@@ -37,8 +37,24 @@ router.route('/user')
         User.find({
         },function(err, users) {
             return res.json(users);
-        }).sort({likes: -1}).limit(5);
+        }).sort({likes: -1}).limit(9);
     })
+    .post(function(req, res) {
+        User.findOne({
+            id: req.body.id
+        },function(err, user) {
+            if (err)
+                return res.send(err);
+            if (user == null) {
+                return res.json({name: null})
+            } else {
+                user.success = true;
+                res.json(user);
+            }
+        });
+    });
+
+router.route('/login')
     .post(function(req, res) {
         User.findOne({
             id: req.body.id

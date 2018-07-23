@@ -18,7 +18,8 @@ class UserPage extends Component {
       pic: null,
       bio: null,
       students: [],
-      id : null
+      id : null,
+      success: null
     };
   }
 
@@ -47,6 +48,14 @@ class UserPage extends Component {
   }
 
   render() {
+    if (this.state.name == null) {
+      return (
+        <div className="fullpage">
+        <HeaderBar loggedin = "true" id={this.props.id} title={"User not found!"}>
+        </HeaderBar>
+        </div>
+      )
+    }
     return (
       <div className="fullpage">
         <HeaderBar loggedin = "true" id={this.props.id} title={this.state.name} content={

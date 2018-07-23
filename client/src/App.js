@@ -51,7 +51,7 @@ class App extends Component {
   }
 
   responseFacebook = (response) => {
-    Axios.post("/api/user", Qs.stringify({
+    Axios.post("/api/login", Qs.stringify({
       "id" : response.id,
       "pic": response.picture.data.url,
       "name": response.name
