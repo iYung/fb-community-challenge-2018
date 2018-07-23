@@ -74,7 +74,7 @@ class UserPage extends Component {
               <Grid.Column  verticalAlign="bottom" key="3" width="2" >
               {
             this.state.students.indexOf(this.props.id) > -1 ?
-            <Image size="small" src="https://i.imgur.com/JKSJnXP.png" onClick={() => {this.props.tipFunction(this.state.id)}} alt="Tip?"/>
+            <Image size="small" src="https://i.imgur.com/uPaZ35a.png" onClick={() => {this.props.tipFunction(this.state.id)}} alt="Tip?"/>
             :
             ""
           }
