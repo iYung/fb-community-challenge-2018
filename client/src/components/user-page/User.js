@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Header, Image, Grid, Segment } from 'semantic-ui-react';
+import { Container, Image, Grid, Segment, Label } from 'semantic-ui-react';
 import Axios from 'axios';
 import Qs from 'qs';
 import ReactMarkdown from 'react-markdown';
@@ -93,14 +93,13 @@ class UserPage extends Component {
         </Container>
         }/>
         <Container text>
-          <Header>
-            Tags
-          </Header>
-          {this.state.tags.join(", ")}
-          <Header>
-            About me
-          </Header>
           <ReactMarkdown source={this.state.bio} />
+          {this.state.categories.join(", ")}
+          {
+            this.state.tags.map( tag =>
+              <Label color="red">{tag}</Label>
+            )
+          }
         </Container>
       </div>
     );
