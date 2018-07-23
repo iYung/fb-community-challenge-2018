@@ -83,6 +83,32 @@ class App extends Component {
   }
 
   render() {
+
+    const optionsProfile = [
+      { key: 'Development', text: 'Development', value: 'Development' },
+      { key: 'Business', text: 'Business', value: 'Business' },
+      { key: 'IT', text: 'IT', value: 'IT' },
+      { key: 'Design', text: 'Design', value: 'Design' },
+      { key: 'Marketing', text: 'Marketing', value: 'Marketing' },
+      { key: 'Photography', text: 'Photography', value: 'Photography' },
+      { key: 'Music', text: 'Music', value: 'Music' },
+      { key: 'Language', text: 'Language', value: 'Language' },
+      { key: 'Other', text: 'Other', value: 'Other' },
+    ]
+
+    const optionsDashboard = [
+      { key: 'All', text: 'All', value: 'All' },
+      { key: 'Development', text: 'Development', value: 'Development' },
+      { key: 'Business', text: 'Business', value: 'Business' },
+      { key: 'IT', text: 'IT', value: 'IT' },
+      { key: 'Design', text: 'Design', value: 'Design' },
+      { key: 'Marketing', text: 'Marketing', value: 'Marketing' },
+      { key: 'Photography', text: 'Photography', value: 'Photography' },
+      { key: 'Music', text: 'Music', value: 'Music' },
+      { key: 'Language', text: 'Language', value: 'Language' },
+      { key: 'Other', text: 'Other', value: 'Other' },
+    ]
+
     return (
       <Router>
         <div>
@@ -93,6 +119,7 @@ class App extends Component {
               name={this.state.name} 
               likes={this.state.likes}
               pic={this.state.picture}
+              options = {optionsDashboard}
             />
           )}/>
           <Route exact path="/profile" render={()=>(
@@ -105,6 +132,7 @@ class App extends Component {
               tags={this.state.tags}
               username={this.state.username}
               bio={this.state.bio}
+              options = {optionsProfile}
             />
           )}/>
           <Route exact path="/user/:id" render={()=>(<UserPage 

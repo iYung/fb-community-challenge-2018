@@ -7,17 +7,6 @@ class ProfilePage extends Component {
 
   render() {
 
-    const options = [
-      { key: 'Development', text: 'Development', value: 'Development' },
-      { key: 'Business', text: 'Business', value: 'Business' },
-      { key: 'IT', text: 'IT', value: 'IT' },
-      { key: 'Design', text: 'Design', value: 'Design' },
-      { key: 'Marketing', text: 'Marketing', value: 'Marketing' },
-      { key: 'Photography', text: 'Photography', value: 'Photography' },
-      { key: 'Music', text: 'Music', value: 'Music' },
-      { key: 'Language', text: 'Language', value: 'Language' },
-    ]
-
     return (
       <div className="fullpage">
         <HeaderBar loggedin = "true" id={this.props.id} title={
@@ -34,7 +23,7 @@ class ProfilePage extends Component {
           <Header>
             Categories
           </Header>
-          <Dropdown placeholder='Skills' id="categories" defaultValue={this.props.categories} fluid multiple selection options={options} />
+          <Dropdown placeholder='Skills' id="categories" defaultValue={this.props.categories} fluid multiple selection options={this.props.options} />
           <Header>
             Tags
           </Header>
