@@ -96,6 +96,7 @@ router.route('/user/update')
                 user.bio = req.body.bio;
                 user.tags = req.body.tags;
                 user.categories = req.body.categories;
+                user.description = req.body.description;
                 user.save(function(err) {
                     if (err)
                         return res.send(err);

@@ -40,6 +40,10 @@ class ProfilePage extends Component {
           </Header>
           <Input id="tags" fluid defaultValue={this.props.tags.join(", ")}/>
           <Header>
+            Description
+          </Header>
+          <Input id="description" fluid defaultValue={this.props.description}/> 
+          <Header>
             About me
           </Header>
           <TextArea id="bio" fluid defaultValue={this.props.bio}/> 

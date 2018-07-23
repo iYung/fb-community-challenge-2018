@@ -26,7 +26,8 @@ class App extends Component {
       tags: [],
       username: null,
       bio: null,
-      likes: null
+      likes: null,
+      description: null
     }
   }
 
@@ -47,14 +48,16 @@ class App extends Component {
       "username" : document.getElementById("username").value,
       "bio" : document.getElementById("bio").value,
       "categories" : cats,
-      "tags": arr
+      "tags": arr,
+      "description" : document.getElementById("description").value
     })).then( res => {
       alert("Profile updated!");
       this.setState({
         "username" : res.data.username,
         "bio": res.data.bio,
         "tags": res.data.tags,
-        "categories" : res.data.categories
+        "categories" : res.data.categories,
+        "description" : res.data.description
       })
     })
   }
@@ -73,7 +76,8 @@ class App extends Component {
         "bio": res.data.bio,
         "tags": res.data.tags,
         "categories": res.data.categories,
-        "likes": res.data.likes
+        "likes": res.data.likes,
+        "description": res.data.description
       })
     })
   }
