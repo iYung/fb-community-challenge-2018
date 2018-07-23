@@ -11,7 +11,7 @@ var UserSchema   = new Schema({
     pic: String,
     name: String,
     students: [String],
-    description: [String]
+    description: String
 });
 
 module.exports = mongoose.model('User', UserSchema);

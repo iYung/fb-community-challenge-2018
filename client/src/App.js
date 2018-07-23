@@ -133,6 +133,7 @@ class App extends Component {
               username={this.state.username}
               bio={this.state.bio}
               options = {optionsProfile}
+              description = {this.state.description}
             />
           )}/>
           <Route exact path="/user/:id" render={()=>(<UserPage 
