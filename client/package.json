@@ -8,6 +8,7 @@
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-facebook-login": "^4.0.1",
+    "react-markdown": "^3.3.4",
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.4",
     "semantic-ui-react": "^0.81.2"
@@ -18,5 +19,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "@types/react-facebook-login": "^3.6.4"
   }
 }

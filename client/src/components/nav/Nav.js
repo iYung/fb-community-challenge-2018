@@ -13,9 +13,14 @@ class NavBar extends Component {
                 <Link to="/about">
                     <Menu.Item name='About Us' className="white"/>
                 </Link>
-                <Link to="/dashboard">
-                    <Menu.Item name='Dashboard' className="white"/>
-                </Link>
+                {
+                    this.props.id != null ? 
+                    <Link to="/dashboard">
+                        <Menu.Item name='Dashboard' className="white"/>
+                    </Link>
+                    :
+                    ""
+                }
                 {
                     this.props.id != null ? 
                     <Link to="/profile">

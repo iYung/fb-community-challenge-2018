@@ -30,10 +30,6 @@ class ProfilePage extends Component {
             About me
           </Header>
           <Input id="bio" fluid defaultValue={this.props.bio}/> 
-          <Header>
-            Example input field
-          </Header>
-          <Input fluid placeholder='Input...' />
           <Segment basic>
             <Button onClick={() => {this.props.updateProfile()}}>Submit</Button>
           </Segment>

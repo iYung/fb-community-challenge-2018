@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Container, Header, Button } from 'semantic-ui-react';
 import Axios from 'axios';
 import Qs from 'qs';
+import ReactMarkdown from 'react-markdown';
 
 import HeaderBar from '../header/Header';
 
@@ -67,7 +68,7 @@ class UserPage extends Component {
           <Header>
             About me
           </Header>
-          {this.state.bio}
+          <ReactMarkdown source={this.state.bio} />
         </Container>
       </div>
     );
