@@ -50,7 +50,7 @@ class DashboardPage extends Component {
           ]
         return (
             <div className="fullpage">
-                <HeaderBar id={this.props.id} title="Dashboard" subtitle={"Logged in as " + this.props.name + ". You have " + this.props.likes + " units."} content={
+                <HeaderBar loggedin = "true" id={this.props.id} title="Dashboard" subtitle={"Logged in as " + this.props.name + ". You have " + this.props.likes + " units."} content={
                     <Container text>
                         <Input id="search" type='text' fluid placeholder='Search...' onKeyPress= {this.handleKeyPress} action>
                             <Select options={options} defaultValue='all categories' />

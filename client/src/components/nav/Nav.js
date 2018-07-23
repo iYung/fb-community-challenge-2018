@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Segment, Menu } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
+import FacebookLogin from 'react-facebook-login';
 
 import './nav.css';
 
@@ -29,6 +30,17 @@ class NavBar extends Component {
                     :
                     ""
                 }
+                {
+                    this.props.loggedin == null ?
+                    <FacebookLogin
+                    appId="1802578269836677"
+                    fields="name,email,picture"
+                    callback={this.props.callback}
+                    size="small" />
+                    :
+                    ""
+                }
+                
             </Menu>
         </Segment>
     );
