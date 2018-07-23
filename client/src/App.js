@@ -31,6 +31,14 @@ class App extends Component {
   }
 
   updateProfile = () => {
+    var nodes = document.getElementById("categories").childNodes;
+    var cats = [];
+    nodes.forEach( node => {
+      if (node.tagName === "A"){
+        cats.push(node.text);
+      }
+      
+    })
     var arr = document.getElementById("tags").value.split(",")
     for(let index = 0; index < arr.length; index++) {
       arr[index] = arr[index].trim()
@@ -39,6 +47,7 @@ class App extends Component {
       "id" : this.state.id,
       "username" : document.getElementById("username").value,
       "bio" : document.getElementById("bio").value,
+      "categories" : cats,
       "tags": arr
     })).then( res => {
       alert("Profile updated!");
@@ -46,6 +55,7 @@ class App extends Component {
         "username" : res.data.username,
         "bio": res.data.bio,
         "tags": res.data.tags,
+        "categories" : res.data.categories
       })
     })
   }
@@ -99,6 +109,7 @@ class App extends Component {
           <Route exact path="/user/:id" render={()=>(<UserPage 
             id={this.state.id} 
             profileLikes={this.state.likes}
+            profileCategories={this.state.categories}
             profilePic={this.state.picture}
             tipFunction={this.tipUser}/>)}/>
           <Route exact path="/about" render={()=>(<AboutPage 
