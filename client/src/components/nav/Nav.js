@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Segment, Menu } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
-import FacebookLogin from 'react-facebook-login';
+import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props'
 
 import './nav.css';
 
@@ -36,7 +36,12 @@ class NavBar extends Component {
                     appId="1802578269836677"
                     fields="name,email,picture"
                     callback={this.props.callback}
-                    size="small" />
+                    render={renderProps => (
+                        <Link to="/">
+                            <Menu.Item name='Login' onClick={renderProps.onClick} className="white"/>
+                        </Link>
+                      )}
+                    />
                     :
                     ""
                 }
