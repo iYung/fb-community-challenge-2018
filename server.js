@@ -132,42 +132,23 @@ router.route('/user/:id/add')
         });
     });
 
-router.route('/user/:id/tip')
-    .post(function(req, res) {
+router.route('/user/:id/like')
+    .get(function(req, res) {
         User.findOne({
-            id: req.body.id
+            id: req.params.id
         },function(err, user) {
             if (err)
                 return res.send(err);
             if (user != null) {
-                if (user.likes > 0) {
-                    user.likes -= 1;
-                    user.save(function(err) {
-                        if (err)
-                            return res.send(err);
-                        User.findOne({
-                            id: req.params.id
-                        },function(err, user) {
-                            if (err)
-                                return res.send(err);
-                            if (user != null) {
-                                user.likes += 1;
-                                user.save( err => {
-                                    if (err)
-                                        return res.send(err)
-                                    else
-                                        return res.json("Success");
-                                });
-                            } else {
-                                res.send("User not found");
-                            }
-                        });
-                    });
-                } else {
-                    res.send("Not enough likes"); 
-                }
+                user.likes += 1;
+                user.save( err => {
+                    if (err)
+                        return res.send(err)
+                    else
+                        return res.json("Success");
+                });
             } else {
-                res.send("OOOPS");  
+                res.send("User not found");
             }
         });
     });

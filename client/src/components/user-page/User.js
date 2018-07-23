@@ -53,6 +53,11 @@ class UserPage extends Component {
     }))
   }
 
+  tipUser = (id) => {
+    Axios.get("/api/user/" + id + "/like")
+    this.setState({ "likes": this.state.likes + 1 })
+  }
+
   render() {
     if (this.state.name == null) {
       return (
@@ -84,7 +89,7 @@ class UserPage extends Component {
               <Grid.Column  verticalAlign="bottom" key="3" width="2" >
               {
             this.state.students.indexOf(this.props.id) > -1 ?
-            <Image size="small" src="https://i.imgur.com/uPaZ35a.png" onClick={() => {this.props.tipFunction(this.state.id)}} alt="Tip?"/>
+            <Image size="small" src="https://i.imgur.com/uPaZ35a.png" onClick={() => {this.tipUser(this.state.id)}} alt="Tip?"/>
             :
             ""
           }

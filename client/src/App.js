@@ -69,15 +69,6 @@ class App extends Component {
     })
   }
 
-  tipUser = (id) => {
-    if (this.state.likes > 0) {
-      Axios.post("/api/user/" + id + "/tip", Qs.stringify({
-        "id" : this.state.id
-      }))
-      this.setState({ "likes": this.state.likes - 1 })
-    }
-  }
-
   render() {
     return (
       <Router>
@@ -106,8 +97,7 @@ class App extends Component {
           <Route exact path="/user/:id" render={()=>(<UserPage 
             id={this.state.id} 
             profileLikes={this.state.likes}
-            profilePic={this.state.picture}
-            tipFunction={this.tipUser}/>)}/>
+            profilePic={this.state.picture}/>)}/>
           <Route exact path="/about" render={()=>(<AboutPage 
             id={this.state.id} />)}/>
         </div>
