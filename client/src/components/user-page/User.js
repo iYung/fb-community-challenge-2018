@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Header } from 'semantic-ui-react';
+import { Container, Header, Image, Grid, Segment } from 'semantic-ui-react';
 import Axios from 'axios';
 import Qs from 'qs';
 import ReactMarkdown from 'react-markdown';
@@ -15,6 +15,7 @@ class UserPage extends Component {
       categories: null,
       tags: [],
       username: null,
+      pic: null,
       bio: null,
       students: [],
       id : null
@@ -32,6 +33,7 @@ class UserPage extends Component {
           "username" : res.data.username,
           "bio": res.data.bio,
           "tags": res.data.tags,
+          "pic": res.data.pic,
           "students": res.data.students
         })
         console.log(res.data);
@@ -48,20 +50,28 @@ class UserPage extends Component {
     return (
       <div className="fullpage">
         <HeaderBar loggedin = "true" id={this.props.id} title={this.state.name} content={
-          <div>
-          <a href={"https:/m.me/" + this.state.username} target="_blank">
-              <input type="image" src="https://i.imgur.com/Pj9XQvJ.png" onClick={() => {this.enrollUser()}} alt="Messenger"/>
+          <Container text>
+            <Grid centered columns="9">
+              <Grid.Column verticalAlign="bottom" width="2" key="1">
+              <a href={"https:/m.me/" + this.state.username} target="_blank">
+              <Image size="small" verticalAlign="bottom" src="https://i.imgur.com/Pj9XQvJ.png" onClick={() => {this.enrollUser()}} alt="Messenger"/>
           </a>
-          {
+              </Grid.Column>
+              <Grid.Column key="2" stretched width="5" >
+                <Segment compact>
+                <Image src={this.state.pic} size='medium'/>
+                </Segment>
+              </Grid.Column>
+              <Grid.Column  verticalAlign="bottom" key="3" width="2" >
+              {
             this.state.students.indexOf(this.props.id) > -1 ?
-            <input type="image" src="https://i.imgur.com/JKSJnXP.png" onClick={() => {this.props.tipFunction(this.state.id)}} alt="Tip?"/>
+            <Image size="small" src="https://i.imgur.com/JKSJnXP.png" onClick={() => {this.props.tipFunction(this.state.id)}} alt="Tip?"/>
             :
             ""
           }
-          <Header>
-            {this.props.profileLikes} Likes
-          </Header>
-        </div>
+              </Grid.Column>
+            </Grid>
+        </Container>
         }/>
         <Container text>
           <Header>
