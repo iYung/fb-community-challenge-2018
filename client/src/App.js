@@ -83,7 +83,14 @@ class App extends Component {
       <Router>
         <div>
           <Route exact path="/" render={()=>(<HomePage callback={this.responseFacebook} id={this.state.id} />)}/>
-          <Route exact path="/dashboard" render={()=>(<DashboardPage id={this.state.id} name={this.state.name} likes={this.state.likes}/>)}/>
+          <Route exact path="/dashboard" render={()=>(
+            <DashboardPage 
+              id={this.state.id} 
+              name={this.state.name} 
+              likes={this.state.likes}
+              pic={this.state.picture}
+            />
+          )}/>
           <Route exact path="/profile" render={()=>(
             <ProfilePage
               updateProfile={this.updateProfile}

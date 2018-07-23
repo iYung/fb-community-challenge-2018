@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Table, Input, Image, Select, Button } from 'semantic-ui-react';
+import { Container, Grid, Segment, Input, Image, Select, Button } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import Axios from 'axios';
 
@@ -60,7 +60,7 @@ class DashboardPage extends Component {
                     </Container>
                 }/>
                 <Container text>
-                    <SearchResults data={this.state.users}/>
+                    <SearchResults pic={this.props.pic} data={this.state.users}/>
                 </Container>
             </div>
         );
@@ -70,29 +70,40 @@ class DashboardPage extends Component {
 class SearchResults extends Component {
 
     render() {
+        var results = this.props.data;
+        var display = [];
+        while (results.length > 0){
+            if (results.length > 2) {
+                display.push(results.slice(0,3));
+                results = results.slice(3);
+            } else if (results.length > 1) {
+                display.push(results.slice(0,2));
+                results = results.slice(2);
+            } else {
+                display.push(results.slice(0,1));
+                results = results.slice(1);
+            }
+        }
+
         return (
-            <Table celled>
-                <Table.Header>
-                    <Table.Row>
-                        <Table.HeaderCell></Table.HeaderCell>
-                        <Table.HeaderCell>Name</Table.HeaderCell>
-                        <Table.HeaderCell>Rating</Table.HeaderCell>
-                    </Table.Row>
-                </Table.Header>
-                <Table.Body>
-                    {
-                        this.props.data.map( user => 
-                            <Table.Row>
-                                <Table.Cell collapsing><Link to={"/user/" + user.id}><Image size="mini" rounded centered src={user.pic} /></Link></Table.Cell>
-                                <Table.Cell><Link to={"/user/" + user.id}>{user.name}</Link></Table.Cell>
-                                <Table.Cell>{user.likes}</Table.Cell>
-                            </Table.Row> 
-                        )
-                    }                
-                </Table.Body>
-                <Table.Footer>
-                </Table.Footer>
-            </Table>
+            <div>
+                {
+                    display.map( row => 
+                        <Grid stackable centered columns="3">
+                        {
+                            row.map( col => 
+                                <Grid.Column verticalAlign="middle">
+                                    <Segment compact textAlign="center">
+                                        <Image centered rounded bordered size="small" src={col.pic} />
+                                        {col.name}
+                                    </Segment>
+                                </Grid.Column>
+                            )
+                        }
+                        </Grid>
+                    )
+                }
+            </div>
         );
     }
 }
