@@ -174,7 +174,6 @@ router.route('/user/:id/tip')
 //params: tag
 router.route('/user/search/:tag')
     .get(function(req, res) {
-        console.log("Searching: " + req.params.tag);
         User.find({
             tags: req.params.tag
         },function(err, users) {

@@ -4,6 +4,7 @@ import Axios from 'axios';
 import Qs from 'qs';
 import ReactMarkdown from 'react-markdown';
 
+import './user.css';
 import HeaderBar from '../header/Header';
 
 class UserPage extends Component {
@@ -19,7 +20,8 @@ class UserPage extends Component {
       bio: null,
       students: [],
       id : null,
-      success: null
+      success: null,
+      likes: null
     };
   }
 
@@ -35,7 +37,8 @@ class UserPage extends Component {
           "bio": res.data.bio,
           "tags": res.data.tags,
           "pic": res.data.pic,
-          "students": res.data.students
+          "students": res.data.students,
+          "likes": res.data.likes
         })
         console.log(res.data);
       })
@@ -67,8 +70,12 @@ class UserPage extends Component {
           </a>
               </Grid.Column>
               <Grid.Column key="2" stretched width="5" >
-                <Segment compact>
-                <Image src={this.state.pic} size='medium'/>
+                <Segment className="blue" compact textAlign="center">
+                  <Image src={this.state.pic} size='medium'/>
+                  <div id="user-desc" className="black">
+                    Jason Long
+                  </div>
+                  {this.state.likes} likes
                 </Segment>
               </Grid.Column>
               <Grid.Column  verticalAlign="bottom" key="3" width="2" >
