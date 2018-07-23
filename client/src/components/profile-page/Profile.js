@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
-<<<<<<< HEAD
-import { Container, Header, Input, Button, Segment, TextArea, Form } from 'semantic-ui-react';
-=======
-import { Container, Header, Input, Button, Segment, Dropdown } from 'semantic-ui-react';
->>>>>>> new
+import { Container, Header, Input, Button, Segment, TextArea, Form, Dropdown } from 'semantic-ui-react';
 
 import HeaderBar from '../header/Header';
 
