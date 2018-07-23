@@ -27,7 +27,8 @@ class DashboardPage extends Component {
 
     search = () => {
         var target = document.getElementById("search").value;
-        Axios.get("/api/user/search/" + target).then((res) => {
+        var category = document.getElementById("categories").childNodes[0].text;
+        Axios.get("/api/user/search/" + category + "/" + target).then((res) => {
             this.setState({
                 users: res.data,
                 searchResultText: `Top mentors for ${target}`
@@ -45,18 +46,12 @@ class DashboardPage extends Component {
       }
 
     render() {
-        const options = [
-            { key: 'all categories', text: 'All Categories', value: 'all categories' },
-            { key: 'languages', text: 'Languages', value: 'languages' },
-            { key: 'technology', text: 'Technology', value: 'technology' },
-            { key: 'cooking', text: 'Cooking', value: 'cooking' },
-          ]
         return (
             <div className="fullpage">
                 <HeaderBar loggedin="true" id={this.props.id} title="Dashboard" subtitle={"Logged in as " + this.props.name + ". You have " + this.props.likes + " units."} content={
                     <Container text>
                         <Input id="search" type='text' fluid placeholder='Search...' onKeyPress= {this.handleKeyPress} action>
-                            <Select options={options} defaultValue='all categories' />
+                            <Select id="categories" options={this.props.options} defaultValue='All' />
                             <input />
                             <Button type='submit' onClick={this.search} color='blue'>Search</Button>
                         </Input>
