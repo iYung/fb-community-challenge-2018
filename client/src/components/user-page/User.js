@@ -99,10 +99,14 @@ class UserPage extends Component {
         }/>
         <Container text>
           <ReactMarkdown source={this.state.bio} />
-          {this.state.categories.join(", ")}
+          {
+            this.state.categories.map( category =>
+              <Label color="blue">{category}</Label>
+            )
+          }
           {
             this.state.tags.map( tag =>
-              <Label color="red">{tag}</Label>
+              <Label color="grey">{tag}</Label>
             )
           }
         </Container>

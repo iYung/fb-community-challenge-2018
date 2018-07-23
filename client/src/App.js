@@ -37,7 +37,6 @@ class App extends Component {
       if (node.tagName === "A"){
         cats.push(node.text);
       }
-      
     })
     var arr = document.getElementById("tags").value.split(",")
     for(let index = 0; index < arr.length; index++) {

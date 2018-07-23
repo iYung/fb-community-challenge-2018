@@ -95,6 +95,7 @@ router.route('/user/update')
                 user.username = req.body.username;
                 user.bio = req.body.bio;
                 user.tags = req.body.tags;
+                user.categories = req.body.categories;
                 user.save(function(err) {
                     if (err)
                         return res.send(err);
@@ -155,13 +156,22 @@ router.route('/user/:id/like')
 
 //Search by tag
 //params: tag
-router.route('/user/search/:tag')
+router.route('/user/search/:category/:tag')
     .get(function(req, res) {
-        User.find({
-            tags: req.params.tag
-        },function(err, users) {
-            return res.json(users);
-        }).limit(15);
+        if (req.params.category == "all") {
+            User.find({
+                tags: req.params.tag,
+            },function(err, users) {
+                return res.json(users);
+            }).limit(15);
+        } else {
+            User.find({
+                categories: req.params.category,
+                tags: req.params.tag
+            },function(err, users) {
+                return res.json(users);
+            }).limit(15);
+        }
     });
 
 app.use('/api', router);
