@@ -66,7 +66,7 @@ router.route('/login')
                 newUser.id = req.body.id;
                 newUser.tags = [];
                 newUser.students = [];
-                newUser.description = "";
+                newUser.description = "No description";
                 newUser.categories = [];
                 newUser.pic = req.body.pic;
                 newUser.username = "";
