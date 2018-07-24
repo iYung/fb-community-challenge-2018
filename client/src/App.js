@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
 import Qs from 'qs';
+import { Container } from '../node_modules/semantic-ui-react';
 
 import './App.css';
 import {
@@ -116,7 +117,7 @@ class App extends Component {
 
     return (
       <Router>
-        <div>
+        <div id="webpage-wrapper">
           <Route exact path="/" render={()=>(<HomePage callback={this.responseFacebook} id={this.state.id} />)}/>
           <Route exact path="/dashboard" render={()=>(
             <DashboardPage 
