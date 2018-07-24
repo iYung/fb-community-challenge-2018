@@ -42,6 +42,13 @@ class App extends Component {
     for(let index = 0; index < arr.length; index++) {
       arr[index] = arr[index].trim()
     }
+    this.setState({
+      "username" : document.getElementById("username").value,
+      "bio" : document.getElementById("bio").value,
+      "categories" : cats,
+      "tags": arr,
+      "description" : document.getElementById("description").value
+    });
     Axios.post("/api/user/update", Qs.stringify({
       "id" : this.state.id,
       "username" : document.getElementById("username").value,
@@ -50,7 +57,6 @@ class App extends Component {
       "tags": arr,
       "description" : document.getElementById("description").value
     })).then( res => {
-      alert("Profile updated!");
       this.setState({
         "username" : res.data.username,
         "bio": res.data.bio,
