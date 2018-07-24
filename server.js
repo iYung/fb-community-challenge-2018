@@ -159,7 +159,7 @@ router.route('/user/:id/like')
 //params: tag
 router.route('/user/search/:category/:tag')
     .get(function(req, res) {
-        if (req.params.category == "all") {
+        if (req.params.category == "All") {
             User.find({
                 tags: req.params.tag,
             },function(err, users) {

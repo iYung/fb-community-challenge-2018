@@ -7,13 +7,21 @@ import './nav.css';
 
 class NavBar extends Component {
 
-  render() {
+    scroll(){
+        var elmnt = document.getElementById("testId");
+        elmnt.scrollIntoView(); 
+    }
+
+    render() {
     return (
         <Segment basic borderless textAlign="center" size="huge" style={{marginBottom: 0}}>
             <Menu borderless compact secondary size="huge">
-                <Link to="/about">
-                    <Menu.Item name='About Us' className="white"/>
-                </Link>
+                {
+                    window.location.pathname === "/" ? 
+                    <Menu.Item name='About Us' onClick={() => { this.scroll()}} className="white"/>
+                    :
+                    ""
+                }
                 {
                     this.props.id != null ? 
                     <Link to="/dashboard">
@@ -37,9 +45,7 @@ class NavBar extends Component {
                     fields="name,email,picture"
                     callback={this.props.callback}
                     render={renderProps => (
-                        <Link to="/">
                             <Menu.Item name='Login' onClick={renderProps.onClick} className="white"/>
-                        </Link>
                       )}
                     />
                     :

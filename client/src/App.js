@@ -11,7 +11,6 @@ import HomePage from './components/home-page/Home'
 import DashboardPage from './components/dashboard-page/Dashboard';
 import ProfilePage from './components/profile-page/Profile';
 import UserPage from './components/user-page/User'
-import AboutPage from './components/about-page/About';
 
 class App extends Component {
 
@@ -150,8 +149,6 @@ class App extends Component {
             profileCategories={this.state.categories}
             enrollUser={this.enrollUser}/>
           )}/>
-          <Route exact path="/about" render={()=>(<AboutPage 
-            id={this.state.id} />)}/>
         </div>
       </Router>
     );
