@@ -13,6 +13,7 @@ class NavBar extends Component {
     }
 
     render() {
+    var link = "/user/" + this.props.id
     return (
         <Segment basic borderless textAlign="center" size="huge" style={{marginBottom: 0}}>
             <Menu borderless compact secondary size="huge">
@@ -31,8 +32,9 @@ class NavBar extends Component {
                     ""
                 }
                 {
+                    
                     this.props.id != null ? 
-                    <Link to="/profile">
+                    <Link to={link}>
                         <Menu.Item name='Profile' className="white"/>
                     </Link>
                     :
