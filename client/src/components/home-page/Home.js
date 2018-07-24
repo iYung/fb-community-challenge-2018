@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Header, Container, Grid, Image, List, Segment } from 'semantic-ui-react';
+import { Header, Container, Grid, Image, List, Segment, Label } from 'semantic-ui-react';
 import { Redirect } from 'react-router-dom'
 
 import './Home.css';
@@ -14,6 +14,7 @@ class HomePage extends Component {
     return (
       <div className="fullpage">
         <HeaderBar backgroundImage="https://i.imgur.com/PzGMarm.jpg" id={this.props.id} title="Find your passion" subtitle="Smaller text" callback={this.props.callback} />
+        <div id="container">
         <Container text textAlign="center">
           <Header>
             Popular Skills
@@ -21,7 +22,7 @@ class HomePage extends Component {
           <br/>
           <Grid stackable stretched columns="4">
             <Grid.Column verticalAlign="middle" key="1">
-              <Image centered rounded bordered size="medium" src="https://i.imgur.com/ASSYHYr.jpg" />
+              <Image centered rounded bordered size="huge" src="https://i.imgur.com/ASSYHYr.jpg" />
             </Grid.Column>
             <Grid.Column key="2">
               <Image centered rounded bordered size="medium" src={"https://i.imgur.com/HcRCdo8.jpg"} />
@@ -66,12 +67,13 @@ class HomePage extends Component {
         </Container>
         <Container text>
           <Header>
-            Can I be a tutor?
+            What you need to be a tutor
           </Header>
-          Possibly
+          These are all that you need to become a successful mentor:
           <List bulleted>
-            <List.Item>Books in your garage</List.Item>
-            <List.Item>Youtube ads</List.Item>
+            <List.Item>Passion and experience in the category of your choosing</List.Item>
+            <List.Item>Excellent communication skills to transfer your knowledge</List.Item>
+            <List.Item>Availability to help your students</List.Item>
           </List>
           <br/>
           <Image centered rounded bordered size="large" src={"https://i.imgur.com/cfeskRb.jpg"} />
@@ -90,9 +92,13 @@ class HomePage extends Component {
           <Grid stackable verticalAlign='middle' columns="2">
             <Grid.Column key="1">
               <Header>
-                TEXT
+                How we work
               </Header>
-              TEXT
+              <Label>
+                Chfhisd
+                sdfhsod
+                sdfhu 
+              </Label >
             </Grid.Column>
             <Grid.Column key="2">
               <Image centered rounded bordered size="medium" src={"https://i.imgur.com/hmbKhXD.jpg"} />
@@ -109,13 +115,16 @@ class HomePage extends Component {
             </Grid.Column>
             <Grid.Column key="2">
               <Header>
-                TEXT
+                Meet people with similar interests
               </Header>
-              TEXT
+              <Label>
+                Regardless of your prior experience level, you can find and connect with people who are experts in the field you wish to learn!  
+              </Label >
             </Grid.Column>
           </Grid>
         </Container>
-          <br/>
+        </div>
+        <br/>
       </div>
     );
   }

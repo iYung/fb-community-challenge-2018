@@ -3,4 +3,11 @@
     width: 100%;
   }
   
-  
+#container {
+
+}
+
+.ui.label, .ui.labels, .label {
+  font-size: 12pt;
+  line-height: 20px;
+}
