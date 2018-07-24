@@ -52,10 +52,10 @@ class DashboardPage extends Component {
                 <HeaderBar 
                     loggedin="true" 
                     backgroundImage="https://i.imgur.com/3v3PqZj.jpg" 
-                    id={this.props.id} title="Dashboard" 
-                    subtitle={"Logged in as " + this.props.name + ". You have " + this.props.likes + " units."} 
+                    id={this.props.id} title="Discover a New Skill" 
                     content={
                         <Container text>
+                            <br/>
                             <Input id="search" type='text' fluid placeholder='Search...' onKeyPress= {this.handleKeyPress} action>
                                 <Select id="categories" options={this.props.options} defaultValue='All' />
                                 <input />

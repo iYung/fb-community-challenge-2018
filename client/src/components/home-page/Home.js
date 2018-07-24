@@ -34,8 +34,6 @@ class HomePage extends Component {
             </Grid.Column>
           </Grid>
           <br/>
-          <a href="https://www.google.com">See more -></a>
-          <br/>
           <br/>
           <Header>
             Top Mentors
@@ -58,8 +56,6 @@ class HomePage extends Component {
               </Segment>
             </Grid.Column>
           </Grid>
-          <br/>
-          <a href="https://www.google.com">See more -></a>
           <br/>
           <br/>
           <br/>
