@@ -32,7 +32,7 @@ class DashboardPage extends Component {
         Axios.get("/api/user/search/" + category + "/" + target).then((res) => {
             this.setState({
                 users: res.data,
-                searchResultText: `Top mentors for ${target}`
+                searchResultText: `Top mentors for '${target}' in ${category}`
             })
         })
     }
@@ -49,20 +49,25 @@ class DashboardPage extends Component {
     render() {
         return (
             <div className="fullpage">
-                <HeaderBar loggedin="true" id={this.props.id} title="Dashboard" subtitle={"Logged in as " + this.props.name + ". You have " + this.props.likes + " units."} content={
-                    <Container text>
-                        <Input id="search" type='text' fluid placeholder='Search...' onKeyPress= {this.handleKeyPress} action>
-                            <Select id="categories" options={this.props.options} defaultValue='All' />
-                            <input />
-                            <Button type='submit' onClick={this.search} color='blue'>Search</Button>
-                        </Input>
-                    </Container>
+                <HeaderBar 
+                    loggedin="true" 
+                    backgroundImage="https://i.imgur.com/3v3PqZj.jpg" 
+                    id={this.props.id} title="Dashboard" 
+                    subtitle={"Logged in as " + this.props.name + ". You have " + this.props.likes + " units."} 
+                    content={
+                        <Container text>
+                            <Input id="search" type='text' fluid placeholder='Search...' onKeyPress= {this.handleKeyPress} action>
+                                <Select id="categories" options={this.props.options} defaultValue='All' />
+                                <input />
+                                <Button type='submit' onClick={this.search} color='blue'>Search</Button>
+                            </Input>
+                        </Container>
                 }/>
                 <Container text>
                     <Header textAlign="center">
                         {this.state.searchResultText}
                     </Header>
-                    <SearchResults pic={this.props.pic} data={this.state.users}/>
+                    <SearchResults enrollUser={this.props.enrollUser} pic={this.props.pic} data={this.state.users}/>
                 </Container>
             </div>
         );
@@ -94,13 +99,25 @@ class SearchResults extends Component {
                         <Grid centered stackable stretched columns="3">
                         {
                             row.map( col => 
-                                <Grid.Column textAlign="center">
+                                <Grid.Column stretched textAlign="center">
                                     <Segment textAlign="center">
                                         <Link to={"/user/" + col.id} >
-                                            <Image centered rounded bordered size="small" src={col.pic} />
-                                            {col.name}
+                                            <Image centered rounded bordered size="tiny" src={col.pic} />
+                                            <b>{col.name}</b>
                                         </Link>
+                                        <div>
                                         {col.description}
+                                        </div>
+                                        <Grid stretched className="bottom" columns="2">
+                                            <Grid.Column stretched>
+                                                <a href={"https:/m.me/" + col.username} target="_blank">
+                                                    <Image floated="left" size="mini" src="https://i.imgur.com/Pj9XQvJ.png" onClick={() => {this.props.enrollUser(col.id)}}/>
+                                                </a>
+                                            </Grid.Column>
+                                            <Grid.Column textAlign="right" verticalAlign="bottom" stretched>
+                                                {col.likes} likes
+                                            </Grid.Column>
+                                        </Grid>
                                     </Segment>
                                 </Grid.Column>
                             )

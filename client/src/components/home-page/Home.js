@@ -13,7 +13,7 @@ class HomePage extends Component {
     }
     return (
       <div className="fullpage">
-        <HeaderBar id={this.props.id} title="Homepage" subtitle="Smaller text" callback={this.props.callback} />
+        <HeaderBar backgroundImage="https://i.imgur.com/PzGMarm.jpg" id={this.props.id} title="Find your passion" subtitle="Smaller text" callback={this.props.callback} />
         <Container text textAlign="center">
           <Header>
             Popular Skills

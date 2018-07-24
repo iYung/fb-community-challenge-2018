@@ -47,12 +47,6 @@ class UserPage extends Component {
       })
   }
 
-  enrollUser() {
-    Axios.post("/api/user/" + this.state.id + "/add", Qs.stringify({
-      "id" : this.props.id
-    }))
-  }
-
   tipUser = (id) => {
     Axios.get("/api/user/" + id + "/like")
     this.setState({ "likes": this.state.likes + 1 })
@@ -69,17 +63,17 @@ class UserPage extends Component {
     }
     return (
       <div className="fullpage">
-        <HeaderBar loggedin = "true" id={this.props.id} title={this.state.name} content={
+        <HeaderBar loggedin="true" backgroundSize="100% 100%" backgroundImage="https://i.imgur.com/G6S6usM.png" id={this.props.id} title={this.state.name} content={
           <Container text>
             <Grid centered columns="9">
               <Grid.Column verticalAlign="bottom" width="2" key="1">
               <a href={"https:/m.me/" + this.state.username} target="_blank">
-              <Image size="small" verticalAlign="bottom" src="https://i.imgur.com/Pj9XQvJ.png" onClick={() => {this.enrollUser()}} alt="Messenger"/>
-          </a>
+                <Image size="small" verticalAlign="bottom" src="https://i.imgur.com/Pj9XQvJ.png" onClick={() => {this.props.enrollUser(this.state.id)}} alt="Messenger"/>
+              </a>
               </Grid.Column>
               <Grid.Column key="2" stretched width="5" >
                 <Segment className="blue" compact textAlign="center">
-                  <Image src={this.state.pic} size='medium'/>
+                  <Image rounded src={this.state.pic} size='medium'/>
                   <div id="user-desc" className="black">
                     {this.state.description}
                   </div>

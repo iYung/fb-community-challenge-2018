@@ -9,7 +9,7 @@ class ProfilePage extends Component {
 
     return (
       <div className="fullpage">
-        <HeaderBar loggedin = "true" id={this.props.id} title={
+        <HeaderBar loggedin="true" backgroundImage="https://i.imgur.com/nIWbFtw.jpg" backgroundSize="100%" id={this.props.id} title={
           <div>
           {this.props.name}
           </div>

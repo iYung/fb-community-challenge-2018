@@ -82,6 +82,12 @@ class App extends Component {
     })
   }
 
+  enrollUser = (id) => {
+    Axios.post("/api/user/" + id + "/add", Qs.stringify({
+      "id" : this.state.id
+    }))
+  }
+
   render() {
 
     const optionsProfile = [
@@ -120,6 +126,7 @@ class App extends Component {
               likes={this.state.likes}
               pic={this.state.picture}
               options = {optionsDashboard}
+              enrollUser={this.enrollUser}
             />
           )}/>
           <Route exact path="/profile" render={()=>(
@@ -140,7 +147,8 @@ class App extends Component {
             id={this.state.id} 
             profileLikes={this.state.likes}
             profilePic={this.state.picture}
-            profileCategories={this.state.categories}/>
+            profileCategories={this.state.categories}
+            enrollUser={this.enrollUser}/>
           )}/>
           <Route exact path="/about" render={()=>(<AboutPage 
             id={this.state.id} />)}/>
