@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { Container, Image, Grid, Segment, Label } from 'semantic-ui-react';
+import { Container, Image, Grid, Segment, Label, Button } from 'semantic-ui-react';
 import Axios from 'axios';
 import Qs from 'qs';
 import ReactMarkdown from 'react-markdown';
-
+import { Link } from 'react-router-dom'
 import './user.css';
 import HeaderBar from '../header/Header';
 
@@ -108,6 +108,16 @@ class UserPage extends Component {
           }
           </Container>
         </Container>
+        {
+          this.props.id === this.state.id ?
+          <Segment basic textAlign="center">
+            <Link to="/profile">
+              <Button>Edit My Profile</Button>
+            </Link>
+          </Segment>
+          :
+          ""
+        }
       </div>
     );
   }
