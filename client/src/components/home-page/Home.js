@@ -105,7 +105,7 @@ class HomePage extends Component {
         <Container text verticalAlign="center">
           <Grid stackable verticalAlign='middle' columns="2">
             <Grid.Column key="1">
-              <Image centered rounded bordered size="medium" src={"https://i.imgur.com/2FuKSms.jpg"} /> 
+              <Image id="testId" centered rounded bordered size="medium" src={"https://i.imgur.com/2FuKSms.jpg"} /> 
             </Grid.Column>
             <Grid.Column key="2">
               <Header>
