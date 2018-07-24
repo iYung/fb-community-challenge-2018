@@ -93,6 +93,9 @@ class UserPage extends Component {
         }/>
         <Container text>
           <ReactMarkdown source={this.state.bio} />
+          <br/>
+          <br/>
+          <Container textAlign="center">
           {
             this.state.categories.map( category =>
               <Label color="blue">{category}</Label>
@@ -103,6 +106,7 @@ class UserPage extends Component {
               <Label color="grey">{tag}</Label>
             )
           }
+          </Container>
         </Container>
       </div>
     );
