@@ -3,4 +3,19 @@
     width: 100%;
   }
   
-  
+#container {
+
+}
+
+.ui.label, .ui.labels, .label {
+  font-size: 12pt;
+  line-height: 20px;
+}
+
+.leach {
+  background-color: rgb(231, 147, 147) !important;
+}
+
+.bottom-section {
+  background-color: rgb(168, 212, 238) !important;
+}
