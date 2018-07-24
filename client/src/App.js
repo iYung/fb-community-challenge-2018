@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
 import Qs from 'qs';
-import { Container } from '../node_modules/semantic-ui-react';
 
 import './App.css';
 import {
