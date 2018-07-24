@@ -35,7 +35,7 @@ class ProfilePage extends Component {
           <Header>
             Description
           </Header>
-          <Input id="description" fluid defaultValue={this.props.description}/> 
+          <Input id="description" fluid defaultValue={this.props.description} maxLength="25"/> 
           <Header>
             About me
           </Header>
