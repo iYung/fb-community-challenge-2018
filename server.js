@@ -13,7 +13,7 @@ mongoose.connect(process.env.DB_URI);
 var port;
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static('client/build'));
-    port = process.env.PORT || config.serverPort;
+    port = process.env.PORT;
 } else {
     port = 3001;
 }

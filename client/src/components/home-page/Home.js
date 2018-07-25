@@ -1,11 +1,28 @@
 import React, { Component } from 'react';
 import { Header, Container, Grid, Image, List, Segment, Label } from 'semantic-ui-react';
 import { Redirect } from 'react-router-dom'
+import Axios from 'axios';
 
 import './Home.css';
 import HeaderBar from '../header/Header';
 
 class HomePage extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+        users: []
+    }
+  }
+  
+  componentWillMount(){
+    Axios.get("/api/user").then((res) => {
+        this.setState({
+            users: res.data
+        })
+        console.log(res.data);
+    })
+}
 
   render() {
     if (this.props.id != null) {
@@ -40,23 +57,7 @@ class HomePage extends Component {
             Top Mentors
           </Header>
           <br/>
-          <Grid stackable stretched columns="3">
-            <Grid.Column verticalAlign="middle" key="1">
-              <Segment textAlign="center"><Image centered rounded bordered size="medium" src={"https://i.imgur.com/I5QHe9i.jpg"} />
-              Lisa Munrow
-              </Segment>
-            </Grid.Column>
-            <Grid.Column key="2">
-              <Segment textAlign="center"><Image centered rounded bordered size="medium" src={"https://i.imgur.com/LuBvbUM.jpg"} />
-                Kendra Mac
-              </Segment>            
-            </Grid.Column>
-            <Grid.Column key="3">
-              <Segment textAlign="center"><Image centered rounded bordered size="medium" src={"https://i.imgur.com/I5QHe9i.jpg"} />
-                Jacob Salve
-              </Segment>
-            </Grid.Column>
-          </Grid>
+          <SearchResults data={this.state.users}/>
           <br/>
           <br/>
           <br/>
@@ -156,6 +157,44 @@ class HomePage extends Component {
         <br/>
       </div>
     );
+  }
+}
+
+class SearchResults extends Component {
+
+  render() {
+      var results = this.props.data;
+      var display = [];
+      
+      if (results.length > 3) {
+        display.push(results.slice(0, 3));
+      } else {
+        display.push(results);
+      }
+
+      return (
+          <div>
+              {
+                  display.map( row => 
+                      <Grid centered stackable stretched columns="3">
+                      {
+                          row.map( col => 
+                              <Grid.Column stretched textAlign="center">
+                                  <Segment textAlign="center">
+                                          <Image centered rounded bordered size="tiny" src={col.pic} />
+                                          <b>{col.name}</b>
+                                      <div>
+                                      {col.description}
+                                      </div>
+                                  </Segment>
+                              </Grid.Column>
+                          )
+                      }
+                      </Grid>
+                  )
+              }
+          </div>
+      );
   }
 }
 

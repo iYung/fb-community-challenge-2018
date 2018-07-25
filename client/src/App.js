@@ -33,6 +33,9 @@ class App extends Component {
   updateProfile = () => {
     var nodes = document.getElementById("categories").childNodes;
     var cats = [];
+    var bio = document.getElementById("bio").value;
+    var username = document.getElementById("username").value;
+    var description = document.getElementById("description").value;
     nodes.forEach( node => {
       if (node.tagName === "A"){
         cats.push(node.text);
@@ -43,28 +46,21 @@ class App extends Component {
       arr[index] = arr[index].trim()
     }
     this.setState({
-      "username" : document.getElementById("username").value,
-      "bio" : document.getElementById("bio").value,
+      "username" : username,
+      "bio" : bio,
       "categories" : cats,
       "tags": arr,
-      "description" : document.getElementById("description").value
+      "description" : description
+    }, () => { 
+      Axios.post("/api/user/update", Qs.stringify({
+        "id" : this.state.id,
+        "username" : username,
+        "bio" : bio,
+        "categories" : cats,
+        "tags": arr,
+        "description" : description
+      }))
     });
-    Axios.post("/api/user/update", Qs.stringify({
-      "id" : this.state.id,
-      "username" : document.getElementById("username").value,
-      "bio" : document.getElementById("bio").value,
-      "categories" : cats,
-      "tags": arr,
-      "description" : document.getElementById("description").value
-    })).then( res => {
-      this.setState({
-        "username" : res.data.username,
-        "bio": res.data.bio,
-        "tags": res.data.tags,
-        "categories" : res.data.categories,
-        "description" : res.data.description
-      })
-    })
   }
 
   responseFacebook = (response) => {
