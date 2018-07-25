@@ -70,29 +70,12 @@ class HomePage extends Component {
           <Header>
             Leach®: Learn + Teach 
           </Header>
-          <Label>
+          <Label className="text-label">
           <br/>
           Leach is a global marketplace for learning and teaching online where students are mastering new skills and achieving their goals by learning from an extensive library of over 80,000 courses taught by expert instructors.
           <br/>
           <br/>
           </Label>
-        </Container>
-          
-          <br/>
-          <br/>
-          <br/>
-        <Container text verticalAlign="center">
-          <Grid stackable verticalAlign='middle' columns="2">
-            <Grid.Column key="1">
-              <Image id="testId" centered rounded bordered size="medium" src={"https://i.imgur.com/2FuKSms.jpg"} /> 
-            </Grid.Column>
-            <Grid.Column key="2">
-              <Header>
-                TEXT
-              </Header>
-              TEXT
-            </Grid.Column>
-          </Grid>
         </Container>
           </div>
           <div className="bottom-section">
@@ -112,7 +95,7 @@ class HomePage extends Component {
             What you need to be a tutor
           </Header>  
           
-          <Label>
+          <Label className="text-label">
 
           <br/>
           These are all that you need to become a successful mentor:
@@ -135,10 +118,10 @@ class HomePage extends Component {
           <Container text verticalAlign="left">
             <Grid stackable verticalAlign='middle' columns="2">
               <Grid.Column key="1">
-                <Header>
+                <Header id="testId">
                   How we work
                 </Header>
-                <Label>
+                <Label className="text-label">
                   Everyone is talented in something! Share your expertise and knowledge with others who desire to learn. Or if you just want to learn something new, find a sensei to get yourself to where you want to be!
                 </Label >
 
@@ -164,7 +147,7 @@ class HomePage extends Component {
                 <Header>
                   Meet people with similar interests
                 </Header>
-                <Label>
+                <Label className="text-label">
                   Regardless of your prior experience level, you can find and connect with people who are experts in the field you wish to learn!  
                 </Label >
               </Grid.Column>

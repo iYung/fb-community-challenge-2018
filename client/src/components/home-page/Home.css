@@ -7,15 +7,13 @@
 
 }
 
-.ui.label, .ui.labels, .label {
-  font-size: 12pt;
-  line-height: 20px;
+.text-label {
+  font-size: 12pt !important;
+  line-height: 20px !important;
 }
 
 .leach {
-  background-color: rgb(231, 147, 147) !important;
 }
 
 .bottom-section {
-  background-color: rgb(168, 212, 238) !important;
 }
