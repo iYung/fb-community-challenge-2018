@@ -168,7 +168,7 @@ router.route('/user/search/:category/:tag')
         } else {
             User.find({
                 categories: req.params.category,
-                tags: req.params.tag
+                tags: req.params.tag.toLowerCase()
             },function(err, users) {
                 return res.json(users);
             }).limit(9);
