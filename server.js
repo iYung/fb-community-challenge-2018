@@ -72,7 +72,7 @@ router.route('/login')
                 newUser.username = "";
                 newUser.name = req.body.name;
                 newUser.bio = "";
-                newUser.likes = 10;
+                newUser.likes = 0;
                 newUser.save(function(err) {
                     if (err)
                         return res.send(err);

@@ -43,9 +43,7 @@ class ProfilePage extends Component {
           </Header>
           <TextArea id="bio" fluid defaultValue={this.props.bio}/> 
           <Segment basic>
-            <Link to={profilePage}>
-              <Button onClick={() => {this.props.updateProfile()}}>Submit</Button>
-            </Link>
+            <Button onClick={() => {this.props.updateProfile()}}>Submit</Button>
           </Segment>
           </Form>
         </Container>
