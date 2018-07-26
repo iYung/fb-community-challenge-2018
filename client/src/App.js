@@ -147,7 +147,7 @@ class App extends Component {
             />
           )}/>
           <Route exact path="/user/:id" render={()=>(<UserPage 
-            id={this.state.id} 
+            id = {this.state.id} 
             profileLikes={this.state.likes}
             profilePic={this.state.picture}
             profileCategories={this.state.categories}
