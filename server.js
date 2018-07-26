@@ -177,4 +177,4 @@ router.route('/user/search/:category/:tag')
 
 app.use('/api', router);
 app.listen(port);
-console.log('Magic happens on port ' + port);
+console.log('Port ' + port);
