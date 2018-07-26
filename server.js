@@ -164,14 +164,14 @@ router.route('/user/search/:category/:tag')
                 tags: req.params.tag,
             },function(err, users) {
                 return res.json(users);
-            }).limit(15);
+            }).limit(9);
         } else {
             User.find({
                 categories: req.params.category,
                 tags: req.params.tag
             },function(err, users) {
                 return res.json(users);
-            }).limit(15);
+            }).limit(9);
         }
     });
 

@@ -60,7 +60,7 @@ class App extends Component {
         "tags": arr,
         "description" : description
       }))
-      alert("Profile updated!");
+      alert("Profile updated successfully!");
       window.scrollTo(0, 0);
     });
   }
