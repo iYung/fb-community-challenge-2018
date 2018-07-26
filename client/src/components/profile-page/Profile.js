@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Container, Header, Input, Button, Segment, TextArea, Form, Dropdown } from 'semantic-ui-react';
-import {Link} from 'react-router-dom'
 import HeaderBar from '../header/Header';
 
 class ProfilePage extends Component {
@@ -10,8 +9,6 @@ class ProfilePage extends Component {
   }
 
   render() {
-
-    var profilePage = "/user/" + this.props.id;
 
     return (
       <div className="fullpage">

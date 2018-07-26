@@ -48,8 +48,10 @@ class UserPage extends Component {
   }
 
   tipUser = (id) => {
-    Axios.get("/api/user/" + id + "/like")
-    this.setState({ "likes": this.state.likes + 1 })
+    if (id !== this.props.id){
+      Axios.get("/api/user/" + id + "/like");
+      this.setState({ "likes": this.state.likes + 1 });
+    }
   }
 
   render() {
