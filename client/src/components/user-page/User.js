@@ -69,9 +69,7 @@ class UserPage extends Component {
           <Container text>
             <Grid centered columns="9">
               <Grid.Column verticalAlign="bottom" width="2" key="1">
-              <a href={"https:/m.me/" + this.state.username} target="_blank">
-                <Image size="small" verticalAlign="bottom" src="https://www.freeiconspng.com/uploads/facebook-chat-logo-png-19.png" onClick={() => {this.props.enrollUser(this.state.id)}} alt="Messenger"/>
-              </a>
+                <Image size="small" verticalAlign="bottom" src="https://www.freeiconspng.com/uploads/facebook-chat-logo-png-19.png" onClick={() => {this.props.enrollUser(this.state.id); window.open("https:/m.me/" + this.state.username,"_blank")}} alt="Messenger"/>
               </Grid.Column>
               <Grid.Column key="2" stretched width="5" >
                 <Segment className="blue" compact textAlign="center">

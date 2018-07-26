@@ -110,9 +110,7 @@ class SearchResults extends Component {
                                         </div>
                                         <Grid stretched className="bottom" columns="2">
                                             <Grid.Column stretched>
-                                                <a href={"https:/m.me/" + col.username} target="_blank">
-                                                    <Image floated="left" size="mini" src="https://i.imgur.com/Pj9XQvJ.png" onClick={() => {this.props.enrollUser(col.id)}}/>
-                                                </a>
+                                                    <Image floated="left" size="mini" src="https://i.imgur.com/Pj9XQvJ.png" onClick={() => {this.props.enrollUser(col.id); window.open("https:/m.me/" + col.username,"_blank");}}/>
                                             </Grid.Column>
                                             <Grid.Column textAlign="right" verticalAlign="bottom" stretched>
                                                 {col.likes} likes
